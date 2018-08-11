@@ -1,0 +1,58 @@
+PODS:
+  - Alamofire (4.7.2)
+  - DNSPageView (1.0.1)
+  - ESTabBarController-swift (2.6.2)
+  - FSPagerView (0.7.1)
+  - HandyJSON (4.1.1)
+  - Kingfisher (4.8.0)
+  - LTScrollView (0.1.6)
+  - Moya (11.0.2):
+    - Moya/Core (= 11.0.2)
+  - Moya/Core (11.0.2):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Result (3.2.4)
+  - SnapKit (4.0.0)
+  - SwiftyJSON (4.1.0)
+
+DEPENDENCIES:
+  - DNSPageView
+  - ESTabBarController-swift
+  - FSPagerView
+  - HandyJSON
+  - Kingfisher
+  - LTScrollView
+  - Moya
+  - SnapKit
+  - SwiftyJSON
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - DNSPageView
+    - ESTabBarController-swift
+    - FSPagerView
+    - HandyJSON
+    - Kingfisher
+    - LTScrollView
+    - Moya
+    - Result
+    - SnapKit
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  DNSPageView: 93b0f9c9ab0e2f8c1d9aa5b0d44740bd2d775d78
+  ESTabBarController-swift: f0a8679e43df1e60b7b36bbcaf1dc98ba6273c7d
+  FSPagerView: 958aba39684e1573755ddcfcc29f7eebb8413cee
+  HandyJSON: 3a3de917c4118767ffe41c29b5acba23409649f4
+  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
+  LTScrollView: 54ad587a9664434c6b25eefd2b8095eb5641c79c
+  Moya: a725035953bc1c0eb1be505ab903984501d82440
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+
+PODFILE CHECKSUM: 69f0339e3e502cbb11505a9306f8194882018346
+
+COCOAPODS: 1.5.3
