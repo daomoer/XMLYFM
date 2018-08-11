@@ -1,0 +1,6 @@
+framework module Pods_XMLYFM {
+  umbrella header "Pods-XMLYFM-umbrella.h"
+
+  export *
+  module * { export * }
+}
