@@ -17,16 +17,7 @@
 		CF26402D210EB2DA00BBB398 /* XMLYFMUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26402C210EB2DA00BBB398 /* XMLYFMUITests.swift */; };
 		CF2640C0210EB6E700BBB398 /* UINavigationBar+YHIndicatorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF264082210EB6E700BBB398 /* UINavigationBar+YHIndicatorImage.m */; };
 		CF2640C1210EB6E700BBB398 /* UINavigationController+YHBackTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF264085210EB6E700BBB398 /* UINavigationController+YHBackTitle.m */; };
-		CF2640C2210EB6E700BBB398 /* UIImage+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF264087210EB6E700BBB398 /* UIImage+GIF.swift */; };
-		CF2640C3210EB6E700BBB398 /* guideImage8.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF264088210EB6E700BBB398 /* guideImage8.gif */; };
-		CF2640C4210EB6E700BBB398 /* lead01.png in Resources */ = {isa = PBXBuildFile; fileRef = CF264089210EB6E700BBB398 /* lead01.png */; };
 		CF2640C5210EB6E700BBB398 /* guide_btn_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF26408A210EB6E700BBB398 /* guide_btn_bg@2x.png */; };
-		CF2640C6210EB6E700BBB398 /* lead02.png in Resources */ = {isa = PBXBuildFile; fileRef = CF26408B210EB6E700BBB398 /* lead02.png */; };
-		CF2640C7210EB6E700BBB398 /* lead03.png in Resources */ = {isa = PBXBuildFile; fileRef = CF26408C210EB6E700BBB398 /* lead03.png */; };
-		CF2640C8210EB6E700BBB398 /* guideImage7.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF26408D210EB6E700BBB398 /* guideImage7.gif */; };
-		CF2640C9210EB6E700BBB398 /* HHGuidePageHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26408E210EB6E700BBB398 /* HHGuidePageHUD.swift */; };
-		CF2640CA210EB6E700BBB398 /* guideImage6.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF26408F210EB6E700BBB398 /* guideImage6.gif */; };
-		CF2640CB210EB6E700BBB398 /* qidong.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = CF264090210EB6E700BBB398 /* qidong.mp4 */; };
 		CF2640CC210EB6E700BBB398 /* WRNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF264092210EB6E700BBB398 /* WRNavigationBar.swift */; };
 		CF2640CD210EB6E700BBB398 /* WRCustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF264093210EB6E700BBB398 /* WRCustomNavigationBar.swift */; };
 		CF2640CE210EB6E700BBB398 /* WRProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF264095210EB6E700BBB398 /* WRProxy.swift */; };
@@ -47,6 +38,8 @@
 		CF40DCE921184C0C002999A5 /* FindAttentionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40DCE821184C0C002999A5 /* FindAttentionCell.swift */; };
 		CF40DCED2118588B002999A5 /* FindAttentionPicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40DCEC2118588B002999A5 /* FindAttentionPicCell.swift */; };
 		CF40DCEF21185D38002999A5 /* FindAttentionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40DCEE21185D38002999A5 /* FindAttentionViewModel.swift */; };
+		CF501D33211FE7DC00F7B3E8 /* HHGuidePageHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF501D31211FE7DB00F7B3E8 /* HHGuidePageHUD.swift */; };
+		CF501D34211FE7DC00F7B3E8 /* UIImage+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF501D32211FE7DB00F7B3E8 /* UIImage+GIF.swift */; };
 		CF61038A2112947200CF9B04 /* RadioSquareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6103892112947200CF9B04 /* RadioSquareCell.swift */; };
 		CF61038C2112AC4E00CF9B04 /* RadioFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61038B2112AC4E00CF9B04 /* RadioFooterView.swift */; };
 		CF6103962112F75E00CF9B04 /* RecommendNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6103952112F75E00CF9B04 /* RecommendNewsCell.swift */; };
@@ -161,16 +154,7 @@
 		CF264083210EB6E700BBB398 /* UINavigationController+YHBackTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+YHBackTitle.h"; sourceTree = "<group>"; };
 		CF264084210EB6E700BBB398 /* UINavigationBar+YHIndicatorImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+YHIndicatorImage.h"; sourceTree = "<group>"; };
 		CF264085210EB6E700BBB398 /* UINavigationController+YHBackTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+YHBackTitle.m"; sourceTree = "<group>"; };
-		CF264087210EB6E700BBB398 /* UIImage+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+GIF.swift"; sourceTree = "<group>"; };
-		CF264088210EB6E700BBB398 /* guideImage8.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = guideImage8.gif; sourceTree = "<group>"; };
-		CF264089210EB6E700BBB398 /* lead01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lead01.png; sourceTree = "<group>"; };
 		CF26408A210EB6E700BBB398 /* guide_btn_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guide_btn_bg@2x.png"; sourceTree = "<group>"; };
-		CF26408B210EB6E700BBB398 /* lead02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lead02.png; sourceTree = "<group>"; };
-		CF26408C210EB6E700BBB398 /* lead03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lead03.png; sourceTree = "<group>"; };
-		CF26408D210EB6E700BBB398 /* guideImage7.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = guideImage7.gif; sourceTree = "<group>"; };
-		CF26408E210EB6E700BBB398 /* HHGuidePageHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHGuidePageHUD.swift; sourceTree = "<group>"; };
-		CF26408F210EB6E700BBB398 /* guideImage6.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = guideImage6.gif; sourceTree = "<group>"; };
-		CF264090210EB6E700BBB398 /* qidong.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = qidong.mp4; sourceTree = "<group>"; };
 		CF264092210EB6E700BBB398 /* WRNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRNavigationBar.swift; sourceTree = "<group>"; };
 		CF264093210EB6E700BBB398 /* WRCustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRCustomNavigationBar.swift; sourceTree = "<group>"; };
 		CF264095210EB6E700BBB398 /* WRProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRProxy.swift; sourceTree = "<group>"; };
@@ -191,6 +175,8 @@
 		CF40DCE821184C0C002999A5 /* FindAttentionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAttentionCell.swift; sourceTree = "<group>"; };
 		CF40DCEC2118588B002999A5 /* FindAttentionPicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAttentionPicCell.swift; sourceTree = "<group>"; };
 		CF40DCEE21185D38002999A5 /* FindAttentionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAttentionViewModel.swift; sourceTree = "<group>"; };
+		CF501D31211FE7DB00F7B3E8 /* HHGuidePageHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHGuidePageHUD.swift; sourceTree = "<group>"; };
+		CF501D32211FE7DB00F7B3E8 /* UIImage+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+GIF.swift"; sourceTree = "<group>"; };
 		CF6103892112947200CF9B04 /* RadioSquareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSquareCell.swift; sourceTree = "<group>"; };
 		CF61038B2112AC4E00CF9B04 /* RadioFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioFooterView.swift; sourceTree = "<group>"; };
 		CF6103952112F75E00CF9B04 /* RecommendNewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendNewsCell.swift; sourceTree = "<group>"; };
@@ -404,16 +390,9 @@
 		CF264086210EB6E700BBB398 /* HHGuidePageHUD */ = {
 			isa = PBXGroup;
 			children = (
-				CF264087210EB6E700BBB398 /* UIImage+GIF.swift */,
-				CF264088210EB6E700BBB398 /* guideImage8.gif */,
-				CF264089210EB6E700BBB398 /* lead01.png */,
+				CF501D31211FE7DB00F7B3E8 /* HHGuidePageHUD.swift */,
+				CF501D32211FE7DB00F7B3E8 /* UIImage+GIF.swift */,
 				CF26408A210EB6E700BBB398 /* guide_btn_bg@2x.png */,
-				CF26408B210EB6E700BBB398 /* lead02.png */,
-				CF26408C210EB6E700BBB398 /* lead03.png */,
-				CF26408D210EB6E700BBB398 /* guideImage7.gif */,
-				CF26408E210EB6E700BBB398 /* HHGuidePageHUD.swift */,
-				CF26408F210EB6E700BBB398 /* guideImage6.gif */,
-				CF264090210EB6E700BBB398 /* qidong.mp4 */,
 			);
 			path = HHGuidePageHUD;
 			sourceTree = "<group>";
@@ -1218,20 +1197,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF2640C3210EB6E700BBB398 /* guideImage8.gif in Resources */,
 				CFC396FD211969570066D7DE /* FindRecommend.json in Resources */,
 				CF2640C5210EB6E700BBB398 /* guide_btn_bg@2x.png in Resources */,
 				CFC396FE211969570066D7DE /* FindAttention.json in Resources */,
-				CF2640C4210EB6E700BBB398 /* lead01.png in Resources */,
-				CF2640CB210EB6E700BBB398 /* qidong.mp4 in Resources */,
 				CF264017210EB2DA00BBB398 /* LaunchScreen.storyboard in Resources */,
 				CF264014210EB2DA00BBB398 /* Assets.xcassets in Resources */,
 				CF264012210EB2D900BBB398 /* Main.storyboard in Resources */,
-				CF2640C8210EB6E700BBB398 /* guideImage7.gif in Resources */,
 				CFC396FF211969570066D7DE /* FindDud.json in Resources */,
-				CF2640C7210EB6E700BBB398 /* lead03.png in Resources */,
-				CF2640CA210EB6E700BBB398 /* guideImage6.gif in Resources */,
-				CF2640C6210EB6E700BBB398 /* lead02.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1341,7 +1313,6 @@
 				CFFE6CAA211016AA00974A8A /* FMRecommendGuessLikeCell.swift in Sources */,
 				CF2640CE210EB6E700BBB398 /* WRProxy.swift in Sources */,
 				CF40DCEF21185D38002999A5 /* FindAttentionViewModel.swift in Sources */,
-				CF2640C2210EB6E700BBB398 /* UIImage+GIF.swift in Sources */,
 				CFFE6C43210FF6D100974A8A /* YYIrregularityContentView.swift in Sources */,
 				CFFD37BE2113F1420056979F /* VipCategoryCell.swift in Sources */,
 				CF40DCED2118588B002999A5 /* FindAttentionPicCell.swift in Sources */,
@@ -1377,7 +1348,6 @@
 				CF26400D210EB2D900BBB398 /* AppDelegate.swift in Sources */,
 				CFFE6C94211016AA00974A8A /* FMHomeController.swift in Sources */,
 				CF61039E21131BB600CF9B04 /* HomeVipFooterView.swift in Sources */,
-				CF2640C9210EB6E700BBB398 /* HHGuidePageHUD.swift in Sources */,
 				CFFE6CA4211016AA00974A8A /* HomeClassifyAPI.swift in Sources */,
 				CFC397122119A5610066D7DE /* FMFindCell.swift in Sources */,
 				CF40DCE521183E75002999A5 /* FindRecommendController.swift in Sources */,
@@ -1387,11 +1357,13 @@
 				CFFE6CB7211016AA00974A8A /* FMRecommendAPI.swift in Sources */,
 				CFFE6C9E211016AA00974A8A /* LiveRankCell.swift in Sources */,
 				CF61038C2112AC4E00CF9B04 /* RadioFooterView.swift in Sources */,
+				CF501D34211FE7DC00F7B3E8 /* UIImage+GIF.swift in Sources */,
 				CFFE6CB2211016AA00974A8A /* FMRecommendHeaderCell.swift in Sources */,
 				CF2640CF210EB6E700BBB398 /* WRCycleScrollView.swift in Sources */,
 				CFC3970121196CF40066D7DE /* FMFindModel.swift in Sources */,
 				CF61039C21131BA100CF9B04 /* HomeVipHeaderView.swift in Sources */,
 				CFFE6C99211016AA00974A8A /* HomeLiveHeaderView.swift in Sources */,
+				CF501D33211FE7DC00F7B3E8 /* HHGuidePageHUD.swift in Sources */,
 				CF2640CC210EB6E700BBB398 /* WRNavigationBar.swift in Sources */,
 				CF2640C0210EB6E700BBB398 /* UINavigationBar+YHIndicatorImage.m in Sources */,
 				CF40DCE721183E87002999A5 /* FindDudController.swift in Sources */,
