@@ -1,2 +1,3 @@
 # XMLYFM
-swift高仿喜马拉雅App，采用MVC+MVVM设计模式，Moya+SwiftyJSON+HandyJSON网络框架和数据解析。数据来源抓包及部分本地json文件
+2018/8/12更新
+把项目上传Github，基本完成了首页五个子页面以及发现页面的UI和数据显示
