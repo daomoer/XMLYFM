@@ -4,6 +4,7 @@ PODS:
   - ESTabBarController-swift (2.6.2)
   - FSPagerView (0.7.1)
   - HandyJSON (4.1.1)
+  - JXMarqueeView (0.0.4)
   - Kingfisher (4.8.0)
   - LTScrollView (0.1.6)
   - Moya (11.0.2):
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - ESTabBarController-swift
   - FSPagerView
   - HandyJSON
+  - JXMarqueeView
   - Kingfisher
   - LTScrollView
   - Moya
@@ -33,6 +35,7 @@ SPEC REPOS:
     - ESTabBarController-swift
     - FSPagerView
     - HandyJSON
+    - JXMarqueeView
     - Kingfisher
     - LTScrollView
     - Moya
@@ -46,6 +49,7 @@ SPEC CHECKSUMS:
   ESTabBarController-swift: f0a8679e43df1e60b7b36bbcaf1dc98ba6273c7d
   FSPagerView: 958aba39684e1573755ddcfcc29f7eebb8413cee
   HandyJSON: 3a3de917c4118767ffe41c29b5acba23409649f4
+  JXMarqueeView: 56694c5fef52de5ee4d47032ba9b13267ca0e67b
   Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
   LTScrollView: 54ad587a9664434c6b25eefd2b8095eb5641c79c
   Moya: a725035953bc1c0eb1be505ab903984501d82440
@@ -53,6 +57,6 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 69f0339e3e502cbb11505a9306f8194882018346
+PODFILE CHECKSUM: 4e9b30bf72bc4b770f8fa49a469890621943e9ae
 
 COCOAPODS: 1.5.3

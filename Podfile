@@ -13,7 +13,7 @@ use_frameworks!
     # 分页
     pod 'DNSPageView'
     #跑马灯
-#    pod 'JXMarqueeView'
+    pod 'JXMarqueeView'
     #滚动页
     pod 'LTScrollView'
     #pod 'MJRefresh'

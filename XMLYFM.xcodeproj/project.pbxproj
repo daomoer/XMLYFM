@@ -51,6 +51,21 @@
 		CF885E22212265E800B13F4B /* lead03.png in Resources */ = {isa = PBXBuildFile; fileRef = CF885E1F212265E700B13F4B /* lead03.png */; };
 		CF885E23212265E800B13F4B /* lead01.png in Resources */ = {isa = PBXBuildFile; fileRef = CF885E20212265E700B13F4B /* lead01.png */; };
 		CF885E24212265E800B13F4B /* lead02.png in Resources */ = {isa = PBXBuildFile; fileRef = CF885E21212265E700B13F4B /* lead02.png */; };
+		CF885E2D21226B6600B13F4B /* FMListenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E2C21226B6600B13F4B /* FMListenModel.swift */; };
+		CF885E3221226BAB00B13F4B /* FMListenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E3121226BAB00B13F4B /* FMListenAPI.swift */; };
+		CF885E3521227F5300B13F4B /* listenSubscibe.json in Resources */ = {isa = PBXBuildFile; fileRef = CF885E3321227F5200B13F4B /* listenSubscibe.json */; };
+		CF885E3621227F5300B13F4B /* listenRecommend.json in Resources */ = {isa = PBXBuildFile; fileRef = CF885E3421227F5200B13F4B /* listenRecommend.json */; };
+		CF885E3B2122817900B13F4B /* ListenRecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E3A2122817900B13F4B /* ListenRecommendController.swift */; };
+		CF885E3D2122818A00B13F4B /* ListenSubscibeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E3C2122818A00B13F4B /* ListenSubscibeController.swift */; };
+		CF885E3F2122819900B13F4B /* ListenChannelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E3E2122819900B13F4B /* ListenChannelController.swift */; };
+		CF885E41212288EF00B13F4B /* FMListenHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E40212288EF00B13F4B /* FMListenHeaderView.swift */; };
+		CF885E452122A45F00B13F4B /* ListenChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E442122A45F00B13F4B /* ListenChannelViewModel.swift */; };
+		CF885E472122A57600B13F4B /* ListenChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E462122A57600B13F4B /* ListenChannelCell.swift */; };
+		CF885E4B2122AB4300B13F4B /* ListenSubscibeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E4A2122AB4300B13F4B /* ListenSubscibeCell.swift */; };
+		CF885E4D2122AB5600B13F4B /* ListenSubscibeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E4C2122AB5600B13F4B /* ListenSubscibeViewModel.swift */; };
+		CF885E582122B6A000B13F4B /* ListenRecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E552122B6A000B13F4B /* ListenRecommendCell.swift */; };
+		CF885E592122B6A000B13F4B /* ListenRecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E572122B6A000B13F4B /* ListenRecommendViewModel.swift */; };
+		CF885E5B2122C27400B13F4B /* FMListenFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E5A2122C27400B13F4B /* FMListenFooterView.swift */; };
 		CFC396FD211969570066D7DE /* FindRecommend.json in Resources */ = {isa = PBXBuildFile; fileRef = CFC396FA211969570066D7DE /* FindRecommend.json */; };
 		CFC396FE211969570066D7DE /* FindAttention.json in Resources */ = {isa = PBXBuildFile; fileRef = CFC396FB211969570066D7DE /* FindAttention.json */; };
 		CFC396FF211969570066D7DE /* FindDud.json in Resources */ = {isa = PBXBuildFile; fileRef = CFC396FC211969570066D7DE /* FindDud.json */; };
@@ -191,6 +206,21 @@
 		CF885E1F212265E700B13F4B /* lead03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lead03.png; sourceTree = "<group>"; };
 		CF885E20212265E700B13F4B /* lead01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lead01.png; sourceTree = "<group>"; };
 		CF885E21212265E700B13F4B /* lead02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lead02.png; sourceTree = "<group>"; };
+		CF885E2C21226B6600B13F4B /* FMListenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMListenModel.swift; sourceTree = "<group>"; };
+		CF885E3121226BAB00B13F4B /* FMListenAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMListenAPI.swift; sourceTree = "<group>"; };
+		CF885E3321227F5200B13F4B /* listenSubscibe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = listenSubscibe.json; sourceTree = "<group>"; };
+		CF885E3421227F5200B13F4B /* listenRecommend.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = listenRecommend.json; sourceTree = "<group>"; };
+		CF885E3A2122817900B13F4B /* ListenRecommendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenRecommendController.swift; sourceTree = "<group>"; };
+		CF885E3C2122818A00B13F4B /* ListenSubscibeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenSubscibeController.swift; sourceTree = "<group>"; };
+		CF885E3E2122819900B13F4B /* ListenChannelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenChannelController.swift; sourceTree = "<group>"; };
+		CF885E40212288EF00B13F4B /* FMListenHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMListenHeaderView.swift; sourceTree = "<group>"; };
+		CF885E442122A45F00B13F4B /* ListenChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenChannelViewModel.swift; sourceTree = "<group>"; };
+		CF885E462122A57600B13F4B /* ListenChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenChannelCell.swift; sourceTree = "<group>"; };
+		CF885E4A2122AB4300B13F4B /* ListenSubscibeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenSubscibeCell.swift; sourceTree = "<group>"; };
+		CF885E4C2122AB5600B13F4B /* ListenSubscibeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenSubscibeViewModel.swift; sourceTree = "<group>"; };
+		CF885E552122B6A000B13F4B /* ListenRecommendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenRecommendCell.swift; sourceTree = "<group>"; };
+		CF885E572122B6A000B13F4B /* ListenRecommendViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenRecommendViewModel.swift; sourceTree = "<group>"; };
+		CF885E5A2122C27400B13F4B /* FMListenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMListenFooterView.swift; sourceTree = "<group>"; };
 		CFC396FA211969570066D7DE /* FindRecommend.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FindRecommend.json; sourceTree = "<group>"; };
 		CFC396FB211969570066D7DE /* FindAttention.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FindAttention.json; sourceTree = "<group>"; };
 		CFC396FC211969570066D7DE /* FindDud.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FindDud.json; sourceTree = "<group>"; };
@@ -430,9 +460,12 @@
 			isa = PBXGroup;
 			children = (
 				CF2640D8210EB83800BBB398 /* FMListenController.swift */,
-				CF2640D7210EB82700BBB398 /* API */,
-				CF2640D6210EB82200BBB398 /* View */,
-				CF2640D5210EB81B00BBB398 /* Model */,
+				CF885E392122815400B13F4B /* ListenChannel -一键听 */,
+				CF885E382122814300B13F4B /* ListenSubscibe- 听订阅 */,
+				CF885E372122813000B13F4B /* ListenRecommend - 听推荐 */,
+				CF885E3021226B9A00B13F4B /* API */,
+				CF885E2921226B3000B13F4B /* View */,
+				CF885E2821226B2B00B13F4B /* Model */,
 			);
 			path = "FMListen-我听";
 			sourceTree = "<group>";
@@ -465,33 +498,12 @@
 		CF2640D4210EB80B00BBB398 /* FMMine-我的 */ = {
 			isa = PBXGroup;
 			children = (
+				CF885E2721226AF400B13F4B /* ViewModel */,
+				CF885E2621226AF100B13F4B /* View */,
+				CF885E2521226AEB00B13F4B /* Model */,
 				CF2640E7210EB89900BBB398 /* FMMineController.swift */,
-				CF2640E6210EB88800BBB398 /* API */,
-				CF2640E5210EB88200BBB398 /* View */,
-				CF2640E4210EB87C00BBB398 /* Model */,
 			);
 			path = "FMMine-我的";
-			sourceTree = "<group>";
-		};
-		CF2640D5210EB81B00BBB398 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		CF2640D6210EB82200BBB398 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		CF2640D7210EB82700BBB398 /* API */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		CF2640DA210EB83D00BBB398 /* Model */ = {
@@ -527,27 +539,6 @@
 			sourceTree = "<group>";
 		};
 		CF2640E1210EB86800BBB398 /* API */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
-		CF2640E4210EB87C00BBB398 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		CF2640E5210EB88200BBB398 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		CF2640E6210EB88800BBB398 /* API */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -657,6 +648,132 @@
 				CF61039D21131BB600CF9B04 /* HomeVipFooterView.swift */,
 			);
 			path = "HeaderAndFooter-头尾视图";
+			sourceTree = "<group>";
+		};
+		CF885E2521226AEB00B13F4B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF885E2621226AF100B13F4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF885E2721226AF400B13F4B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CF885E2821226B2B00B13F4B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF885E2C21226B6600B13F4B /* FMListenModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF885E2921226B3000B13F4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF885E40212288EF00B13F4B /* FMListenHeaderView.swift */,
+				CF885E5A2122C27400B13F4B /* FMListenFooterView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF885E3021226B9A00B13F4B /* API */ = {
+			isa = PBXGroup;
+			children = (
+				CF885E3421227F5200B13F4B /* listenRecommend.json */,
+				CF885E3321227F5200B13F4B /* listenSubscibe.json */,
+				CF885E3121226BAB00B13F4B /* FMListenAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		CF885E372122813000B13F4B /* ListenRecommend - 听推荐 */ = {
+			isa = PBXGroup;
+			children = (
+				CF885E3A2122817900B13F4B /* ListenRecommendController.swift */,
+				CF885E542122B6A000B13F4B /* View */,
+				CF885E562122B6A000B13F4B /* ViewModel */,
+			);
+			path = "ListenRecommend - 听推荐";
+			sourceTree = "<group>";
+		};
+		CF885E382122814300B13F4B /* ListenSubscibe- 听订阅 */ = {
+			isa = PBXGroup;
+			children = (
+				CF885E3C2122818A00B13F4B /* ListenSubscibeController.swift */,
+				CF885E492122AB2B00B13F4B /* ViewModel */,
+				CF885E482122AB2600B13F4B /* View */,
+			);
+			path = "ListenSubscibe- 听订阅";
+			sourceTree = "<group>";
+		};
+		CF885E392122815400B13F4B /* ListenChannel -一键听 */ = {
+			isa = PBXGroup;
+			children = (
+				CF885E3E2122819900B13F4B /* ListenChannelController.swift */,
+				CF885E432122A43000B13F4B /* View */,
+				CF885E422122A42900B13F4B /* ViewModel */,
+			);
+			path = "ListenChannel -一键听";
+			sourceTree = "<group>";
+		};
+		CF885E422122A42900B13F4B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CF885E442122A45F00B13F4B /* ListenChannelViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CF885E432122A43000B13F4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF885E462122A57600B13F4B /* ListenChannelCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF885E482122AB2600B13F4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF885E4A2122AB4300B13F4B /* ListenSubscibeCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF885E492122AB2B00B13F4B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CF885E4C2122AB5600B13F4B /* ListenSubscibeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CF885E542122B6A000B13F4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF885E552122B6A000B13F4B /* ListenRecommendCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF885E562122B6A000B13F4B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CF885E572122B6A000B13F4B /* ListenRecommendViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		CFC39702211973DF0066D7DE /* View */ = {
@@ -1207,11 +1324,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFC396FD211969570066D7DE /* FindRecommend.json in Resources */,
+				CF885E3621227F5300B13F4B /* listenRecommend.json in Resources */,
 				CF885E24212265E800B13F4B /* lead02.png in Resources */,
 				CF2640C5210EB6E700BBB398 /* guide_btn_bg@2x.png in Resources */,
 				CFC396FE211969570066D7DE /* FindAttention.json in Resources */,
 				CF264017210EB2DA00BBB398 /* LaunchScreen.storyboard in Resources */,
 				CF264014210EB2DA00BBB398 /* Assets.xcassets in Resources */,
+				CF885E3521227F5300B13F4B /* listenSubscibe.json in Resources */,
 				CF885E23212265E800B13F4B /* lead01.png in Resources */,
 				CF264012210EB2D900BBB398 /* Main.storyboard in Resources */,
 				CF885E22212265E800B13F4B /* lead03.png in Resources */,
@@ -1248,6 +1367,7 @@
 				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/JXMarqueeView/JXMarqueeView.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/LTScrollView/LTScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
@@ -1262,6 +1382,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JXMarqueeView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LTScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
@@ -1327,6 +1448,7 @@
 				CF40DCEF21185D38002999A5 /* FindAttentionViewModel.swift in Sources */,
 				CFFE6C43210FF6D100974A8A /* YYIrregularityContentView.swift in Sources */,
 				CFFD37BE2113F1420056979F /* VipCategoryCell.swift in Sources */,
+				CF885E3B2122817900B13F4B /* ListenRecommendController.swift in Sources */,
 				CF40DCED2118588B002999A5 /* FindAttentionPicCell.swift in Sources */,
 				CFFE6C4D210FF7CE00974A8A /* YYBouncesContentView.swift in Sources */,
 				CFFE6CA0211016AA00974A8A /* HomeClassifyModel.swift in Sources */,
@@ -1344,16 +1466,20 @@
 				CFFE6CD9211197D000974A8A /* RadioHeaderView.swift in Sources */,
 				CFFD37C72114084D0056979F /* VipEnjoyCell.swift in Sources */,
 				CFFE6CB1211016AA00974A8A /* OneKeyListenCell.swift in Sources */,
+				CF885E2D21226B6600B13F4B /* FMListenModel.swift in Sources */,
 				CFFE6CA7211016AA00974A8A /* HomeRecommendModel.swift in Sources */,
 				CFFE6C4C210FF7CE00974A8A /* YYBasicContentView.swift in Sources */,
 				CFFE6C95211016AA00974A8A /* HomeBroadcastController.swift in Sources */,
 				CFFE6C96211016AA00974A8A /* HomeBaseViewController.swift in Sources */,
 				CF2640D0210EB6E700BBB398 /* WRCycleCell.swift in Sources */,
 				CFFD37C9211408580056979F /* VipHotCell.swift in Sources */,
+				CF885E3221226BAB00B13F4B /* FMListenAPI.swift in Sources */,
 				CFFE6CB0211016AA00974A8A /* FMOneKeyListenCell.swift in Sources */,
 				CFFE6CD2211196E600974A8A /* RadioCategoriesCell.swift in Sources */,
 				CFFE6CB6211016AA00974A8A /* RecommendLiveCell.swift in Sources */,
+				CF885E41212288EF00B13F4B /* FMListenHeaderView.swift in Sources */,
 				CFFD37C5211406C70056979F /* HomeVipEnjoyCell.swift in Sources */,
+				CF885E472122A57600B13F4B /* ListenChannelCell.swift in Sources */,
 				CFC3970F21199D650066D7DE /* FindRecommendPicCell.swift in Sources */,
 				CFFE6CD4211196FD00974A8A /* HomeRadiosCell.swift in Sources */,
 				CFFE6CB4211016AA00974A8A /* FMAdvertCell.swift in Sources */,
@@ -1362,6 +1488,8 @@
 				CF61039E21131BB600CF9B04 /* HomeVipFooterView.swift in Sources */,
 				CFFE6CA4211016AA00974A8A /* HomeClassifyAPI.swift in Sources */,
 				CFC397122119A5610066D7DE /* FMFindCell.swift in Sources */,
+				CF885E452122A45F00B13F4B /* ListenChannelViewModel.swift in Sources */,
+				CF885E3D2122818A00B13F4B /* ListenSubscibeController.swift in Sources */,
 				CF40DCE521183E75002999A5 /* FindRecommendController.swift in Sources */,
 				CFFE6C9B211016AA00974A8A /* HomeLiveGridCell.swift in Sources */,
 				CFFE6C9D211016AA00974A8A /* HomeLiveRankCell.swift in Sources */,
@@ -1369,11 +1497,13 @@
 				CFFE6CB7211016AA00974A8A /* FMRecommendAPI.swift in Sources */,
 				CFFE6C9E211016AA00974A8A /* LiveRankCell.swift in Sources */,
 				CF61038C2112AC4E00CF9B04 /* RadioFooterView.swift in Sources */,
+				CF885E4D2122AB5600B13F4B /* ListenSubscibeViewModel.swift in Sources */,
 				CF501D34211FE7DC00F7B3E8 /* UIImage+GIF.swift in Sources */,
 				CFFE6CB2211016AA00974A8A /* FMRecommendHeaderCell.swift in Sources */,
 				CF2640CF210EB6E700BBB398 /* WRCycleScrollView.swift in Sources */,
 				CFC3970121196CF40066D7DE /* FMFindModel.swift in Sources */,
 				CF61039C21131BA100CF9B04 /* HomeVipHeaderView.swift in Sources */,
+				CF885E4B2122AB4300B13F4B /* ListenSubscibeCell.swift in Sources */,
 				CFFE6C99211016AA00974A8A /* HomeLiveHeaderView.swift in Sources */,
 				CF501D33211FE7DC00F7B3E8 /* HHGuidePageHUD.swift in Sources */,
 				CF2640CC210EB6E700BBB398 /* WRNavigationBar.swift in Sources */,
@@ -1383,7 +1513,10 @@
 				CF40DCD5211816A4002999A5 /* HomeClassifyViewModel.swift in Sources */,
 				CFFE6CCA211194F400974A8A /* HomeBroadcastAPI.swift in Sources */,
 				CF2640C1210EB6E700BBB398 /* UINavigationController+YHBackTitle.m in Sources */,
+				CF885E582122B6A000B13F4B /* ListenRecommendCell.swift in Sources */,
 				CFFE6CB3211016AA00974A8A /* FMRecommendGridCell.swift in Sources */,
+				CF885E5B2122C27400B13F4B /* FMListenFooterView.swift in Sources */,
+				CF885E3F2122819900B13F4B /* ListenChannelController.swift in Sources */,
 				CF2640D9210EB83800BBB398 /* FMListenController.swift in Sources */,
 				CF2640DE210EB85A00BBB398 /* FMFindController.swift in Sources */,
 				CFFE6CA6211016AA00974A8A /* HomeRecommendController.swift in Sources */,
@@ -1391,6 +1524,7 @@
 				CFFE6C9A211016AA00974A8A /* LiveHeaderGridCell.swift in Sources */,
 				CFFE6C46210FF6D100974A8A /* YYNavigationController.swift in Sources */,
 				CFFE6CAF211016AA00974A8A /* FMRecommendFooterView.swift in Sources */,
+				CF885E592122B6A000B13F4B /* ListenRecommendViewModel.swift in Sources */,
 				CFC3970B21199D370066D7DE /* FindRecommendViewModel.swift in Sources */,
 				CFFE6C35210FF69000974A8A /* Const.swift in Sources */,
 				CFFE6CBB211016AA00974A8A /* HomeVIPController.swift in Sources */,

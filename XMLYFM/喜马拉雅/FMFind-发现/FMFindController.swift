@@ -50,7 +50,7 @@ class FMFindController: UIViewController {
         /* 设置代理 监听滚动 */
         advancedManager.delegate = self
         /* 设置悬停位置 */
-        //        advancedManager.hoverY = 64
+//                advancedManager.hoverY = 64
         /* 点击切换滚动过程动画 */
         //        advancedManager.isClickScrollAnimation = true
         /* 代码设置滚动到第几个位置 */

@@ -26,11 +26,11 @@ class HomeLiveViewModel: NSObject {
 extension HomeLiveViewModel {
     func refreshDataSource() {
         loadLiveData()
-        loadBannerData()
-        loadRankData()
     }
     
     func loadLiveData(){
+        let grpup = DispatchGroup()
+        grpup.enter()
         //        //首页直播接口请求
         HomeLiveProvider.request(.liveList) { result in
             if case let .success(response) = result {
@@ -42,13 +42,13 @@ extension HomeLiveViewModel {
                     self.categoryVoList = mappedObject.data?.categoryVoList
 //                    self.collectionView.reloadData()
                     // 更新tableView数据
-                    self.updataBlock?()
+//                    self.updataBlock?()
+                    grpup.leave()
                 }
             }
         }
-    }
-    
-    func loadBannerData(){
+        
+        grpup.enter()
         //        //首页直播滚动图接口请求
         HomeLiveProvider.request(.liveBannerList) { result in
             if case let .success(response) = result {
@@ -57,16 +57,18 @@ extension HomeLiveViewModel {
                 let json = JSON(data!)
                 if let mappedObject = JSONDeserializer<HomeLiveBanerModel>.deserializeFrom(json: json.description) { // 从字符串转换为对象实例
                     self.homeLiveBanerList = mappedObject.data
-//                    let index: IndexPath = IndexPath.init(row: 0, section: 1)
-//                    self.collectionView.reloadItems(at: [index])
+                    //                    let index: IndexPath = IndexPath.init(row: 0, section: 1)
+                    //                    self.collectionView.reloadItems(at: [index])
                     // 更新tableView数据
-                    self.updataBlock?()
+//                    self.updataBlock?()
+                    grpup.leave()
                 }
             }
         }
-    }
-    
-    func loadRankData(){
+        
+        
+        
+        grpup.enter()
         //        //首页直播排行榜接口请求
         HomeLiveProvider.request(.liveRankList) { result in
             if case let .success(response) = result {
@@ -75,12 +77,17 @@ extension HomeLiveViewModel {
                 let json = JSON(data!)
                 if let mappedObject = JSONDeserializer<HomeLiveRankModel>.deserializeFrom(json: json.description) { // 从字符串转换为对象实例
                     self.multidimensionalRankVos = mappedObject.data?.multidimensionalRankVos
-//                    let index: IndexPath = IndexPath.init(row: 0, section: 2)
-//                    self.collectionView.reloadItems(at: [index])
+                    //                    let index: IndexPath = IndexPath.init(row: 0, section: 2)
+                    //                    self.collectionView.reloadItems(at: [index])
                     // 更新tableView数据
-                    self.updataBlock?()
+//                    self.updataBlock?()
+                    grpup.leave()
                 }
             }
+        }
+        
+        grpup.notify(queue: DispatchQueue.main) {
+            self.updataBlock?()
         }
     }
 }
