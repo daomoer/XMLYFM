@@ -14,6 +14,9 @@ PODS:
     - Result (~> 3.0)
   - Result (3.2.4)
   - SnapKit (4.0.0)
+  - SwiftMessages (4.1.4):
+    - SwiftMessages/App (= 4.1.4)
+  - SwiftMessages/App (4.1.4)
   - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
@@ -26,6 +29,7 @@ DEPENDENCIES:
   - LTScrollView
   - Moya
   - SnapKit
+  - SwiftMessages
   - SwiftyJSON
 
 SPEC REPOS:
@@ -41,6 +45,7 @@ SPEC REPOS:
     - Moya
     - Result
     - SnapKit
+    - SwiftMessages
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -55,8 +60,9 @@ SPEC CHECKSUMS:
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SwiftMessages: 2c33fdee8b8f38dfc7e1036684456b505891da8c
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 4e9b30bf72bc4b770f8fa49a469890621943e9ae
+PODFILE CHECKSUM: 5809997a0ed9765a4c955a153c880ab1008d0f38
 
 COCOAPODS: 1.5.3
