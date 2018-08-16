@@ -182,7 +182,11 @@ class FindAttentionCell: UITableViewCell {
             let commentNum:Int = (model.statInfo?.commentCount)!
             self.commnetLabel.text = "\(commentNum)"
             self.desLabel.text = model.contentInfo?.text
-        
+            let textHeight:CGFloat = height(for: model.contentInfo)
+            self.desLabel.snp.updateConstraints { (make) in
+                make.height.equalTo(textHeight)
+            }
+            
             self.dateLabel.text = updateTimeToCurrennTime(timeStamp: Double(CGFloat(model.timeline)))
             
             self.eventInfos = model
@@ -202,6 +206,17 @@ class FindAttentionCell: UITableViewCell {
             }
             self.collectionView.reloadData()
         }
+    }
+    
+    func height(for commentModel: FindAContentInfo?) -> CGFloat {
+        var height: CGFloat = 30
+        guard let model = commentModel else { return height }
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.numberOfLines = 0
+        label.text = model.text
+        height += label.sizeThatFits(CGSize(width: YYScreenWidth - 30, height: CGFloat.infinity)).height
+        return height
     }
     
     //MARK: -根据后台时间戳返回几分钟前，几小时前，几天前

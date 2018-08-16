@@ -11,7 +11,7 @@ import LTScrollView
 
 class ListenSubscibeController: UIViewController,LTTableViewProtocal {
     private lazy var footerView:FMListenFooterView = {
-        let view = FMListenFooterView.init(frame: CGRect(x:0, y:0, width:YYScreenWidth, height:120))
+        let view = FMListenFooterView.init(frame: CGRect(x:0, y:0, width:YYScreenWidth, height:100))
         view.listenFooterViewTitle = "➕添加订阅"
         return view
     }()

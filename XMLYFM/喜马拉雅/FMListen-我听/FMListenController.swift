@@ -58,16 +58,47 @@ class FMListenController: UIViewController {
         return advancedManager
     }()
     
+    //Mark: - 导航栏左边按钮
+    private lazy var leftBarButton:UIButton = {
+        let button = UIButton.init(type: UIButtonType.custom)
+        button.frame = CGRect(x:0, y:0, width:30, height: 30)
+        button.setImage(UIImage(named: "msg"), for: UIControlState.normal)
+        button.addTarget(self, action: #selector(leftBarButtonClick), for: UIControlEvents.touchUpInside)
+        return button
+    }()
+    //Mark: - 导航栏右边按钮
+    private lazy var rightBarButton:UIButton = {
+        let button = UIButton.init(type: UIButtonType.custom)
+        button.frame = CGRect(x:0, y:0, width:30, height: 30)
+        button.setImage(UIImage(named: "搜索"), for: UIControlState.normal)
+        button.addTarget(self, action: #selector(rightBarButtonClick), for: UIControlEvents.touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         self.automaticallyAdjustsScrollViewInsets = false
         view.addSubview(advancedManager)
         advancedManagerConfig()
+        
+        // 导航栏左右item
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: leftBarButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: rightBarButton)
+
     }
     
     deinit {
         print("FMFindController < --> deinit")
+    }
+    
+    //Mark: - 导航栏左边消息点击事件
+    @objc func leftBarButtonClick() {
+        
+    }
+    //Mark: - 导航栏左边消息点击事件
+    @objc func rightBarButtonClick() {
+        
     }
 }
 

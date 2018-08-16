@@ -42,15 +42,10 @@ class FMFindCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-    var imageUrl:String? {
+    var dataString: String? {
         didSet {
-            self.imageView.kf.setImage(with: URL(string: imageUrl!))
-        }
-    }
-    
-    var titleString: String? {
-        didSet {
-            self.titleLabel.text = titleString
+            self.titleLabel.text = dataString
+            self.imageView.image = UIImage(named: dataString!)
         }
     }
 }

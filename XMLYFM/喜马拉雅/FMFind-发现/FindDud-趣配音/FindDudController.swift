@@ -17,7 +17,7 @@ class FindDudController:  UIViewController , LTTableViewProtocal{
     private let FindDudCellID = "FindDudCell"
     
     private lazy var tableView: UITableView = {
-        let tableView = tableViewConfig(CGRect(x: 0, y: 0, width:YYScreenWidth, height: YYScreenHeigth-56), self, self, nil)
+        let tableView = tableViewConfig(CGRect(x: 0, y: 0, width:YYScreenWidth, height: YYScreenHeigth-56-64), self, self, nil)
         tableView.register(FindDudCell.self, forCellReuseIdentifier: FindDudCellID)
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         return tableView

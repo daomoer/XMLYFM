@@ -74,5 +74,39 @@ struct albumsModel:HandyJSON {
     var tracks: Int = 0
 }
 
+////////////////////////////////// 一键听点击添加更多频道 Model \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+struct MoreChannelListModel: HandyJSON {
+    var ret: Int = 0
+    var msg: String?
+    var slogan: String?
+    var lastVisitChannel: ChannelInfosModel?
+    var classInfos: [ChannelClassInfoModel]?
+    var recSrc: String?
+    var recTrack: String?
+}
+
+struct ChannelInfosModel: HandyJSON{
+    var channelProperty: String?
+    var channelId: Int = 0
+    var channelName: String?
+    var positionId: Int = 0
+    var cover: String?
+    var bigCover: String?
+    var isRec: Bool = false
+    var jumpUrl: String?
+    var playUrl: String?
+    var slogan: String?
+    var playParam: PlayParamModel?
+    var createdAt: Int = 0
+    var subscribe: Bool = false
+}
+
+struct ChannelClassInfoModel: HandyJSON {
+    var className: String?
+    var classId: Int = 0
+    var channelInfos:[ChannelInfosModel]?
+}
+
+
 
 

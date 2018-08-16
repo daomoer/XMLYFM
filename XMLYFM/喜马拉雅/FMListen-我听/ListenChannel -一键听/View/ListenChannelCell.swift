@@ -10,8 +10,7 @@ import UIKit
 import JXMarqueeView
 
 class ListenChannelCell: UITableViewCell {
-    private var marqueeView = JXMarqueeView()
-    
+    private let marqueeView = JXMarqueeView()
     // 背景大图
     private var picView : UIImageView = {
         let imageView = UIImageView()
@@ -32,7 +31,6 @@ class ListenChannelCell: UITableViewCell {
         let label = UILabel()
         label.textColor = UIColor.white
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        label.text = "测试啊多胡搜费货收到了粉红色的龙卷风"
         return label
     }()
     
@@ -64,18 +62,18 @@ class ListenChannelCell: UITableViewCell {
             make.height.equalTo(30)
         }
         
-        self.picView.addSubview(self.scrollLabel)
-        self.scrollLabel.snp.makeConstraints { (make) in
+        // 文字跑马灯效果
+        marqueeView.contentView = self.scrollLabel
+        marqueeView.contentMargin = 10
+        marqueeView.marqueeType = .reverse
+        self.picView.addSubview(marqueeView)
+        marqueeView.snp.makeConstraints { (make) in
             make.left.equalTo(self.titleLabel)
             make.top.equalTo(self.titleLabel.snp.bottom).offset(5)
             make.height.equalTo(25)
-            make.width.equalTo(200)
+            make.left.equalTo(self.titleLabel)
+            make.right.equalToSuperview().offset(-70)
         }
-        marqueeView.contentView = self.scrollLabel
-        marqueeView.contentMargin = 10
-        marqueeView.marqueeType = .left
-        marqueeView.backgroundColor = UIColor.red
-        self.picView.addSubview(marqueeView)
         
         
         self.picView.addSubview(self.playBtn)
@@ -84,13 +82,25 @@ class ListenChannelCell: UITableViewCell {
             make.width.height.equalTo(45)
         }
     }
-    
+    /// 一键听主页数据模型
     var channelResults:ChannelResultsModel? {
         didSet {
             guard let model = channelResults else {return}
            self.picView.kf.setImage(with: URL(string: model.bigCover!))
             self.titleLabel.text = model.channelName
            self.scrollLabel.text = model.slogan
+        }
+    }
+    
+    /// 更多频道数据模型
+    var channelInfoModel:ChannelInfosModel? {
+        didSet {
+            guard let model = channelInfoModel else {return}
+            self.picView.kf.setImage(with: URL(string: model.bigCover!))
+            self.titleLabel.text = model.channelName
+            self.scrollLabel.text = model.slogan
+            self.titleLabel.font = UIFont.systemFont(ofSize: 22)
+            self.scrollLabel.font = UIFont.systemFont(ofSize: 16)
         }
     }
     

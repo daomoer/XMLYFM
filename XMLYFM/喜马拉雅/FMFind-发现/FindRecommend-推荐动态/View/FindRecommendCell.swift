@@ -178,6 +178,10 @@ class FindRecommendCell: UITableViewCell {
             guard let model = streamModel else {return}
             self.picView.kf.setImage(with: URL(string: model.avatar!))
             self.desLabel.text = model.content
+            let textHeight:CGFloat = height(for: model)
+            self.desLabel.snp.updateConstraints { (make) in
+                make.height.equalTo(textHeight)
+            }
             self.nameLabel.text = model.nickname
             self.zanLabel.text = "\(model.likesCount)"
             self.commnetLabel.text = "\(model.commentsCount)"
@@ -201,6 +205,17 @@ class FindRecommendCell: UITableViewCell {
             }
             self.collectionView.reloadData()
         }
+    }
+    //计算文字的高度
+    func height(for commentModel: FindRStreamList?) -> CGFloat {
+        var height: CGFloat = 30
+        guard let model = commentModel else { return height }
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.numberOfLines = 0
+        label.text = model.content
+        height += label.sizeThatFits(CGSize(width: YYScreenWidth - 30, height: CGFloat.infinity)).height
+        return height
     }
     
     //MARK: -根据后台时间戳返回几分钟前，几小时前，几天前

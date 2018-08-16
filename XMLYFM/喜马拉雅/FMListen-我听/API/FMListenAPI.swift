@@ -14,7 +14,7 @@ let FMListenProvider = MoyaProvider<FMListenAPI>()
 public enum FMListenAPI {
     case listenSubscibeList
     case listenChannelList
-    case listenRecommendList
+    case listenMoreChannelList
 }
 
 //请求配置

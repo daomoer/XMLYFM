@@ -13,8 +13,9 @@ class ListenChannelController: UIViewController,LTTableViewProtocal {
     
     //Mark:- footerView
     private lazy var footerView:FMListenFooterView = {
-        let view = FMListenFooterView.init(frame: CGRect(x:0, y:0, width:YYScreenWidth, height:120))
+        let view = FMListenFooterView.init(frame: CGRect(x:0, y:0, width:YYScreenWidth, height:100))
         view.listenFooterViewTitle = "➕添加频道"
+        view.delegate = self
         return view
     }()
     
@@ -73,6 +74,12 @@ class ListenChannelController: UIViewController,LTTableViewProtocal {
             cell.channelResults = viewModel.channelResults?[indexPath.row]
             return cell
         }
-        
 }
 
+//Mark: - 底部添加频道按钮点击delegate
+extension ListenChannelController : FMListenFooterViewDelegate {
+    func listenFooterAddBtnClick() {
+        let vc = ListenMoreChannelController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
