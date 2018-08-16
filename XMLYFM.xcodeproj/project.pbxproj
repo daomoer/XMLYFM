@@ -40,6 +40,7 @@
 		CF40DCEF21185D38002999A5 /* FindAttentionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40DCEE21185D38002999A5 /* FindAttentionViewModel.swift */; };
 		CF501D33211FE7DC00F7B3E8 /* HHGuidePageHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF501D31211FE7DB00F7B3E8 /* HHGuidePageHUD.swift */; };
 		CF501D34211FE7DC00F7B3E8 /* UIImage+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF501D32211FE7DB00F7B3E8 /* UIImage+GIF.swift */; };
+		CF5EB94021250DF300BB6962 /* FMMineMakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5EB93F21250DF300BB6962 /* FMMineMakeCell.swift */; };
 		CF61038A2112947200CF9B04 /* RadioSquareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6103892112947200CF9B04 /* RadioSquareCell.swift */; };
 		CF61038C2112AC4E00CF9B04 /* RadioFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61038B2112AC4E00CF9B04 /* RadioFooterView.swift */; };
 		CF6103962112F75E00CF9B04 /* RecommendNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6103952112F75E00CF9B04 /* RecommendNewsCell.swift */; };
@@ -48,6 +49,9 @@
 		CF61039E21131BB600CF9B04 /* HomeVipFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61039D21131BB600CF9B04 /* HomeVipFooterView.swift */; };
 		CF6103A021131CB600CF9B04 /* HomeVipBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61039F21131CB600CF9B04 /* HomeVipBannerCell.swift */; };
 		CF6103A221131CCB00CF9B04 /* HomeVipCategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6103A121131CCB00CF9B04 /* HomeVipCategoriesCell.swift */; };
+		CF642D272123BCBA00BAE77F /* OneKeyListenLTCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF642D262123BCBA00BAE77F /* OneKeyListenLTCell.swift */; };
+		CF642D292124045900BAE77F /* VipAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF642D282124045900BAE77F /* VipAnimationView.swift */; };
+		CF642D2B21240F2200BAE77F /* FMMineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF642D2A21240F2200BAE77F /* FMMineHeaderView.swift */; };
 		CF885E22212265E800B13F4B /* lead03.png in Resources */ = {isa = PBXBuildFile; fileRef = CF885E1F212265E700B13F4B /* lead03.png */; };
 		CF885E23212265E800B13F4B /* lead01.png in Resources */ = {isa = PBXBuildFile; fileRef = CF885E20212265E700B13F4B /* lead01.png */; };
 		CF885E24212265E800B13F4B /* lead02.png in Resources */ = {isa = PBXBuildFile; fileRef = CF885E21212265E700B13F4B /* lead02.png */; };
@@ -66,6 +70,8 @@
 		CF885E582122B6A000B13F4B /* ListenRecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E552122B6A000B13F4B /* ListenRecommendCell.swift */; };
 		CF885E592122B6A000B13F4B /* ListenRecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E572122B6A000B13F4B /* ListenRecommendViewModel.swift */; };
 		CF885E5B2122C27400B13F4B /* FMListenFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E5A2122C27400B13F4B /* FMListenFooterView.swift */; };
+		CF885E5D2122D2FF00B13F4B /* listenMoreChannel.json in Resources */ = {isa = PBXBuildFile; fileRef = CF885E5C2122D2FF00B13F4B /* listenMoreChannel.json */; };
+		CF885E5F2122D32C00B13F4B /* ListenMoreChannelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF885E5E2122D32C00B13F4B /* ListenMoreChannelController.swift */; };
 		CFC396FD211969570066D7DE /* FindRecommend.json in Resources */ = {isa = PBXBuildFile; fileRef = CFC396FA211969570066D7DE /* FindRecommend.json */; };
 		CFC396FE211969570066D7DE /* FindAttention.json in Resources */ = {isa = PBXBuildFile; fileRef = CFC396FB211969570066D7DE /* FindAttention.json */; };
 		CFC396FF211969570066D7DE /* FindDud.json in Resources */ = {isa = PBXBuildFile; fileRef = CFC396FC211969570066D7DE /* FindDud.json */; };
@@ -132,6 +138,8 @@
 		CFFE6CD2211196E600974A8A /* RadioCategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFE6CD1211196E600974A8A /* RadioCategoriesCell.swift */; };
 		CFFE6CD4211196FD00974A8A /* HomeRadiosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFE6CD3211196FD00974A8A /* HomeRadiosCell.swift */; };
 		CFFE6CD9211197D000974A8A /* RadioHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFE6CD8211197D000974A8A /* RadioHeaderView.swift */; };
+		CFFFE05A21253B3000869F7A /* CVLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFFE05921253B3000869F7A /* CVLayerView.swift */; };
+		CFFFE0D7212575B800869F7A /* MineSetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFFE0D6212575B800869F7A /* MineSetController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +203,7 @@
 		CF40DCEE21185D38002999A5 /* FindAttentionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAttentionViewModel.swift; sourceTree = "<group>"; };
 		CF501D31211FE7DB00F7B3E8 /* HHGuidePageHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHGuidePageHUD.swift; sourceTree = "<group>"; };
 		CF501D32211FE7DB00F7B3E8 /* UIImage+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+GIF.swift"; sourceTree = "<group>"; };
+		CF5EB93F21250DF300BB6962 /* FMMineMakeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMMineMakeCell.swift; sourceTree = "<group>"; };
 		CF6103892112947200CF9B04 /* RadioSquareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSquareCell.swift; sourceTree = "<group>"; };
 		CF61038B2112AC4E00CF9B04 /* RadioFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioFooterView.swift; sourceTree = "<group>"; };
 		CF6103952112F75E00CF9B04 /* RecommendNewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendNewsCell.swift; sourceTree = "<group>"; };
@@ -203,6 +212,9 @@
 		CF61039D21131BB600CF9B04 /* HomeVipFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVipFooterView.swift; sourceTree = "<group>"; };
 		CF61039F21131CB600CF9B04 /* HomeVipBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVipBannerCell.swift; sourceTree = "<group>"; };
 		CF6103A121131CCB00CF9B04 /* HomeVipCategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVipCategoriesCell.swift; sourceTree = "<group>"; };
+		CF642D262123BCBA00BAE77F /* OneKeyListenLTCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneKeyListenLTCell.swift; sourceTree = "<group>"; };
+		CF642D282124045900BAE77F /* VipAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VipAnimationView.swift; sourceTree = "<group>"; };
+		CF642D2A21240F2200BAE77F /* FMMineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMMineHeaderView.swift; sourceTree = "<group>"; };
 		CF885E1F212265E700B13F4B /* lead03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lead03.png; sourceTree = "<group>"; };
 		CF885E20212265E700B13F4B /* lead01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lead01.png; sourceTree = "<group>"; };
 		CF885E21212265E700B13F4B /* lead02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lead02.png; sourceTree = "<group>"; };
@@ -221,6 +233,8 @@
 		CF885E552122B6A000B13F4B /* ListenRecommendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenRecommendCell.swift; sourceTree = "<group>"; };
 		CF885E572122B6A000B13F4B /* ListenRecommendViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenRecommendViewModel.swift; sourceTree = "<group>"; };
 		CF885E5A2122C27400B13F4B /* FMListenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMListenFooterView.swift; sourceTree = "<group>"; };
+		CF885E5C2122D2FF00B13F4B /* listenMoreChannel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = listenMoreChannel.json; sourceTree = "<group>"; };
+		CF885E5E2122D32C00B13F4B /* ListenMoreChannelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenMoreChannelController.swift; sourceTree = "<group>"; };
 		CFC396FA211969570066D7DE /* FindRecommend.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FindRecommend.json; sourceTree = "<group>"; };
 		CFC396FB211969570066D7DE /* FindAttention.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FindAttention.json; sourceTree = "<group>"; };
 		CFC396FC211969570066D7DE /* FindDud.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FindDud.json; sourceTree = "<group>"; };
@@ -287,6 +301,8 @@
 		CFFE6CD1211196E600974A8A /* RadioCategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioCategoriesCell.swift; sourceTree = "<group>"; };
 		CFFE6CD3211196FD00974A8A /* HomeRadiosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRadiosCell.swift; sourceTree = "<group>"; };
 		CFFE6CD8211197D000974A8A /* RadioHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioHeaderView.swift; sourceTree = "<group>"; };
+		CFFFE05921253B3000869F7A /* CVLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVLayerView.swift; sourceTree = "<group>"; };
+		CFFFE0D6212575B800869F7A /* MineSetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineSetController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -393,10 +409,10 @@
 			isa = PBXGroup;
 			children = (
 				CFFE6C4E211016A900974A8A /* FMHome-首页 */,
-				CF2640D4210EB80B00BBB398 /* FMMine-我的 */,
+				CF2640D1210EB7E200BBB398 /* FMListen-我听 */,
 				CF2640D3210EB7FD00BBB398 /* FMPlay-播放 */,
 				CF2640D2210EB7F000BBB398 /* FMFind-发现 */,
-				CF2640D1210EB7E200BBB398 /* FMListen-我听 */,
+				CF2640D4210EB80B00BBB398 /* FMMine-我的 */,
 			);
 			path = "喜马拉雅";
 			sourceTree = "<group>";
@@ -460,8 +476,8 @@
 			isa = PBXGroup;
 			children = (
 				CF2640D8210EB83800BBB398 /* FMListenController.swift */,
-				CF885E392122815400B13F4B /* ListenChannel -一键听 */,
 				CF885E382122814300B13F4B /* ListenSubscibe- 听订阅 */,
+				CF885E392122815400B13F4B /* ListenChannel -一键听 */,
 				CF885E372122813000B13F4B /* ListenRecommend - 听推荐 */,
 				CF885E3021226B9A00B13F4B /* API */,
 				CF885E2921226B3000B13F4B /* View */,
@@ -498,10 +514,11 @@
 		CF2640D4210EB80B00BBB398 /* FMMine-我的 */ = {
 			isa = PBXGroup;
 			children = (
+				CF2640E7210EB89900BBB398 /* FMMineController.swift */,
+				CFFFE0D6212575B800869F7A /* MineSetController.swift */,
 				CF885E2721226AF400B13F4B /* ViewModel */,
 				CF885E2621226AF100B13F4B /* View */,
 				CF885E2521226AEB00B13F4B /* Model */,
-				CF2640E7210EB89900BBB398 /* FMMineController.swift */,
 			);
 			path = "FMMine-我的";
 			sourceTree = "<group>";
@@ -660,6 +677,10 @@
 		CF885E2621226AF100B13F4B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CF642D282124045900BAE77F /* VipAnimationView.swift */,
+				CF642D2A21240F2200BAE77F /* FMMineHeaderView.swift */,
+				CF5EB93F21250DF300BB6962 /* FMMineMakeCell.swift */,
+				CFFFE05921253B3000869F7A /* CVLayerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -691,6 +712,7 @@
 		CF885E3021226B9A00B13F4B /* API */ = {
 			isa = PBXGroup;
 			children = (
+				CF885E5C2122D2FF00B13F4B /* listenMoreChannel.json */,
 				CF885E3421227F5200B13F4B /* listenRecommend.json */,
 				CF885E3321227F5200B13F4B /* listenSubscibe.json */,
 				CF885E3121226BAB00B13F4B /* FMListenAPI.swift */,
@@ -722,6 +744,7 @@
 			isa = PBXGroup;
 			children = (
 				CF885E3E2122819900B13F4B /* ListenChannelController.swift */,
+				CF885E5E2122D32C00B13F4B /* ListenMoreChannelController.swift */,
 				CF885E432122A43000B13F4B /* View */,
 				CF885E422122A42900B13F4B /* ViewModel */,
 			);
@@ -740,6 +763,7 @@
 			isa = PBXGroup;
 			children = (
 				CF885E462122A57600B13F4B /* ListenChannelCell.swift */,
+				CF642D262123BCBA00BAE77F /* OneKeyListenLTCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1327,6 +1351,7 @@
 				CF885E3621227F5300B13F4B /* listenRecommend.json in Resources */,
 				CF885E24212265E800B13F4B /* lead02.png in Resources */,
 				CF2640C5210EB6E700BBB398 /* guide_btn_bg@2x.png in Resources */,
+				CF885E5D2122D2FF00B13F4B /* listenMoreChannel.json in Resources */,
 				CFC396FE211969570066D7DE /* FindAttention.json in Resources */,
 				CF264017210EB2DA00BBB398 /* LaunchScreen.storyboard in Resources */,
 				CF264014210EB2DA00BBB398 /* Assets.xcassets in Resources */,
@@ -1373,6 +1398,7 @@
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1388,6 +1414,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1441,7 +1468,9 @@
 				CFFE6CA5211016AA00974A8A /* HomeClassifyController.swift in Sources */,
 				CFFE6C9C211016AA00974A8A /* HomeLiveBannerCell.swift in Sources */,
 				CFFE6CAB211016AA00974A8A /* FMGuessYouLikeCell.swift in Sources */,
+				CF642D2B21240F2200BAE77F /* FMMineHeaderView.swift in Sources */,
 				CFFE6CAC211016AA00974A8A /* HotAudiobookCell.swift in Sources */,
+				CF5EB94021250DF300BB6962 /* FMMineMakeCell.swift in Sources */,
 				CFFE6CA2211016AA00974A8A /* HomeClassifyCell.swift in Sources */,
 				CFFE6CAA211016AA00974A8A /* FMRecommendGuessLikeCell.swift in Sources */,
 				CF2640CE210EB6E700BBB398 /* WRProxy.swift in Sources */,
@@ -1459,12 +1488,16 @@
 				CFFE6CA3211016AA00974A8A /* HomeClassifyFooterView.swift in Sources */,
 				CF40DCE921184C0C002999A5 /* FindAttentionCell.swift in Sources */,
 				CF26400F210EB2D900BBB398 /* ViewController.swift in Sources */,
+				CF642D272123BCBA00BAE77F /* OneKeyListenLTCell.swift in Sources */,
 				CF40DCE321183E63002999A5 /* FindAttentionController.swift in Sources */,
 				CF61038A2112947200CF9B04 /* RadioSquareCell.swift in Sources */,
 				CFFE6CB8211016AA00974A8A /* HomeVipModel.swift in Sources */,
 				CF6103962112F75E00CF9B04 /* RecommendNewsCell.swift in Sources */,
 				CFFE6CD9211197D000974A8A /* RadioHeaderView.swift in Sources */,
+				CF642D292124045900BAE77F /* VipAnimationView.swift in Sources */,
+				CFFFE0D7212575B800869F7A /* MineSetController.swift in Sources */,
 				CFFD37C72114084D0056979F /* VipEnjoyCell.swift in Sources */,
+				CFFFE05A21253B3000869F7A /* CVLayerView.swift in Sources */,
 				CFFE6CB1211016AA00974A8A /* OneKeyListenCell.swift in Sources */,
 				CF885E2D21226B6600B13F4B /* FMListenModel.swift in Sources */,
 				CFFE6CA7211016AA00974A8A /* HomeRecommendModel.swift in Sources */,
@@ -1518,6 +1551,7 @@
 				CF885E5B2122C27400B13F4B /* FMListenFooterView.swift in Sources */,
 				CF885E3F2122819900B13F4B /* ListenChannelController.swift in Sources */,
 				CF2640D9210EB83800BBB398 /* FMListenController.swift in Sources */,
+				CF885E5F2122D32C00B13F4B /* ListenMoreChannelController.swift in Sources */,
 				CF2640DE210EB85A00BBB398 /* FMFindController.swift in Sources */,
 				CFFE6CA6211016AA00974A8A /* HomeRecommendController.swift in Sources */,
 				CF6103A221131CCB00CF9B04 /* HomeVipCategoriesCell.swift in Sources */,
@@ -1703,6 +1737,7 @@
 			baseConfigurationReference = B0652E1388B5442B1DB52D46 /* Pods-XMLYFM.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 975N9Y458Z;
 				INFOPLIST_FILE = XMLYFM/Info.plist;
@@ -1714,7 +1749,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhiyan.XMLYFM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1723,6 +1758,7 @@
 			baseConfigurationReference = 43D4828D64A2FCEDF2415956 /* Pods-XMLYFM.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 975N9Y458Z;
 				INFOPLIST_FILE = XMLYFM/Info.plist;
@@ -1734,7 +1770,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhiyan.XMLYFM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

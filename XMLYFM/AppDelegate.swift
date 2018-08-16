@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // 加载底部tabbar样式
-     func customIrregularityStyle(delegate: UITabBarControllerDelegate?) -> YYNavigationController {
+     func customIrregularityStyle(delegate: UITabBarControllerDelegate?) -> ESTabBarController {
         let tabBarController = ESTabBarController()
         tabBarController.delegate = delegate
         tabBarController.title = "Irregularity"
@@ -88,12 +88,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         v3.tabBarItem = ESTabBarItem.init(YYIrregularityContentView(), title: nil, image: UIImage(named: "tab_play"), selectedImage: UIImage(named: "tab_play"))
         v4.tabBarItem = ESTabBarItem.init(YYIrregularityBasicContentView(), title: "发现", image: UIImage(named: "favor"), selectedImage: UIImage(named: "favor_1"))
         v5.tabBarItem = ESTabBarItem.init(YYIrregularityBasicContentView(), title: "我的", image: UIImage(named: "me"), selectedImage: UIImage(named: "me_1"))
+        let n1 = YYNavigationController.init(rootViewController: v1)
+        let n2 = YYNavigationController.init(rootViewController: v2)
+        let n3 = YYNavigationController.init(rootViewController: v3)
+        let n4 = YYNavigationController.init(rootViewController: v4)
+        let n5 = YYNavigationController.init(rootViewController: v5)
+        v1.title = "首页"
+        v2.title = "我听"
+        v3.title = "播放"
+        v4.title = "发现"
+        v5.title = "我的"
         
-        tabBarController.viewControllers = [v1, v2, v3, v4, v5]
-        
-        let navigationController = YYNavigationController.init(rootViewController: tabBarController)
-        tabBarController.title = "喜马拉雅"
-        return navigationController
+        tabBarController.viewControllers = [n1, n2, n3, n4, n5]
+        return tabBarController
     }
     
 
