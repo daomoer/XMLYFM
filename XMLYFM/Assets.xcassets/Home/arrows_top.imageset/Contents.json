@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "arrows_top.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "history@2x.png",
       "scale" : "2x"
     },
     {
