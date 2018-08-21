@@ -44,6 +44,7 @@ class MineSetController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "设置"
         self.view.addSubview(self.tableView)
     }
 }

@@ -15,6 +15,7 @@ let HomeLiveSectionLive     = 3   // 直播section
 
 /// 首页直播控制器
 class HomeLiveController: HomeBaseViewController {
+
     private let HomeLiveHeaderViewID = "HomeLiveHeaderView"
     private let RecommendLiveCellID = "RecommendLiveCell"
     private let HomeLiveGridCellID   = "HomeLiveGridCell"
@@ -102,6 +103,10 @@ extension HomeLiveController: UICollectionViewDelegate, UICollectionViewDataSour
             return cell
         }
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
     }
     
     //每个分区的内边距

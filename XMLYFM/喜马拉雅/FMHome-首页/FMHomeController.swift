@@ -26,6 +26,9 @@ class FMHomeController: UIViewController{
         
         let titles = ["推荐","分类","VIP","直播","广播"]
         let viewControllers:[UIViewController] = [HomeRecommendController(),HomeClassifyController(),HomeVIPController(),HomeLiveController(),HomeBroadcastController()]
+        for vc in viewControllers{
+            self.addChildViewController(vc)
+        }
         let pageView = DNSPageView(frame: CGRect(x: 0, y: 64, width: YYScreenWidth, height: YYScreenHeigth-64-44), style: style, titles: titles, childViewControllers: viewControllers)
         view.addSubview(pageView)
     }

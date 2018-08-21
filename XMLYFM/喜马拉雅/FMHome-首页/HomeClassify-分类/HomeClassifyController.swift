@@ -76,7 +76,9 @@ extension HomeClassifyController: UICollectionViewDelegateFlowLayout, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let categoryId:Int = (viewModel.classifyModel?[indexPath.section].itemList![indexPath.row].itemDetail?.categoryId)!
+        let vc = ClassifySubMenuController(categoryId: categoryId)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     //每个分区的内边距

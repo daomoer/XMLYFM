@@ -1,14 +1,14 @@
 //
-//  HotAudiobookCell.swift
-//  YYSwiftProject
+//  ClassifySubVerticalCell.swift
+//  XMLYFM
 //
-//  Created by Domo on 2018/7/26.
+//  Created by Domo on 2018/8/17.
 //  Copyright © 2018年 知言网络. All rights reserved.
 //
 
 import UIKit
 
-class HotAudiobookCell: UICollectionViewCell {
+class ClassifySubVerticalCell: UICollectionViewCell {
     // 图片
     private var picView: UIImageView = {
         let imageView = UIImageView()
@@ -70,12 +70,12 @@ class HotAudiobookCell: UICollectionViewCell {
         imageView.image = UIImage(named: "track.png")
         return imageView
     }()
-    
+   
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpUI()
     }
-    
+   
     func setUpUI(){
         self.addSubview(self.picView)
         self.picView.image = UIImage(named: "pic1.jpeg")
@@ -140,21 +140,11 @@ class HotAudiobookCell: UICollectionViewCell {
         }
         
     }
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
-    var recommendData:RecommendListModel? {
-        didSet{
-            guard let model = recommendData else { return }
-            if (model.pic != nil) {
-                self.picView.kf.setImage(with: URL(string: model.pic!))
-            }
-            if (model.coverPath != nil) {
-                self.picView.kf.setImage(with: URL(string: model.coverPath!))
-            }
-            self.titleLabel.text = model.title
-            self.subLabel.text = model.subtitle
+    var classifyVerticalModel:ClassifyVerticalModel? {
+        didSet {
+            guard let model = classifyVerticalModel else {return}
+             self.picView.kf.setImage(with: URL(string: model.coverMiddle!))
             if model.isPaid {
                 self.paidLabel.isHidden = true
                 self.paidLabel.snp.updateConstraints { (make) in
@@ -164,34 +154,8 @@ class HotAudiobookCell: UICollectionViewCell {
                     make.left.equalTo(self.paidLabel.snp.right)
                 }
             }
-            self.tracksLabel.text = "\(model.tracksCount)集"
-            var tagString:String?
-            if model.playsCount > 100000000 {
-                tagString = String(format: "%.1f亿", Double(model.playsCount) / 100000000)
-            } else if model.playsCount > 10000 {
-                tagString = String(format: "%.1f万", Double(model.playsCount) / 10000)
-            } else {
-                tagString = "\(model.playsCount)"
-            }
-            self.numLabel.text = tagString
-        }
-    }
-    
-    var guessYouLikeModel:GuessYouLikeModel? {
-        didSet{
-            guard let model = guessYouLikeModel else { return }
             self.titleLabel.text = model.title
-            self.picView.kf.setImage(with: URL(string: model.coverMiddle!))
-            self.subLabel.text = model.recReason
-            if model.isPaid {
-                self.paidLabel.isHidden = true
-                self.paidLabel.snp.updateConstraints { (make) in
-                    make.width.equalTo(0)
-                }
-                self.titleLabel.snp.updateConstraints { (make) in
-                    make.left.equalTo(self.paidLabel.snp.right)
-                }
-            }
+            self.subLabel.text = model.intro
             self.tracksLabel.text = "\(model.tracks)集"
             var tagString:String?
             if model.playsCounts > 100000000 {
@@ -203,5 +167,9 @@ class HotAudiobookCell: UICollectionViewCell {
             }
             self.numLabel.text = tagString
         }
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 }

@@ -16,6 +16,12 @@ let HomeVipSectionVip       = 4   // vip section
 
 /// 首页vip控制器
 class HomeVIPController: HomeBaseViewController {
+    //Mark: - 上页面传过来请求接口必须的参数
+    convenience init(isRecommendPush:Bool = false) {
+        self.init()
+        self.tableView.frame = CGRect(x:0,y:0,width:YYScreenWidth,height:YYScreenHeigth)
+    }
+    
     private let HomeVIPCellID           = "HomeVIPCell"
     
     private let HomeVipHeaderViewID     = "HomeVipHeaderView"

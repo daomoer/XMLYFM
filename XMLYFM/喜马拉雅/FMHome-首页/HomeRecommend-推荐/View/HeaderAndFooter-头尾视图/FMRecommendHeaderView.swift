@@ -7,8 +7,13 @@
 //
 
 import UIKit
+// 创建闭包
+typealias HeaderMoreBtnClick = () ->Void
 
 class FMRecommendHeaderView: UICollectionReusableView {
+    
+    var headerMoreBtnClick : HeaderMoreBtnClick?
+    
     // 标题
     private var titleLabel: UILabel = {
         let label = UILabel()
@@ -28,6 +33,7 @@ class FMRecommendHeaderView: UICollectionReusableView {
         button.setTitle("更多 >", for: UIControlState.normal)
         button.setTitleColor(UIColor.gray, for: UIControlState.normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        button.addTarget(self, action: #selector(moreBtn(button:)), for: UIControlEvents.touchUpInside)
         return button
     }()
     override init(frame: CGRect) {
@@ -74,5 +80,10 @@ class FMRecommendHeaderView: UICollectionReusableView {
             }
         }
     }
-
+    
+    
+    @objc func moreBtn(button:UIButton){
+        guard let headerMoreBtnClick = headerMoreBtnClick else { return }
+        headerMoreBtnClick()
+    }
 }

@@ -18,6 +18,7 @@ use_frameworks!
     pod 'LTScrollView'
     #pod 'MJRefresh'
     #pod 'SkeletonView'
+    #消息提示
     pod 'SwiftMessages'
     #pod 'YYKit'
     #pod 'SVProgressHUD'

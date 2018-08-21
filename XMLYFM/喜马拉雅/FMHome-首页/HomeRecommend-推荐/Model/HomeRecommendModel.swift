@@ -193,6 +193,11 @@ struct GuessYouLikeModel: HandyJSON {
     var tracksCount: Int = 0
     var vipFreeType: Int = 0
     
+    //// 更多追加
+    var coverMiddle:String?
+    var recReason:String?
+    var tracks:Int = 0
+    var playsCounts:Int = 0
 }
 
 struct PaidCategoryModel: HandyJSON {

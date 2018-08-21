@@ -17,6 +17,7 @@ enum FMRecommendAPI {
     case recommendList//推荐列表
     case recommendForYouList // 为你推荐
     case recommendAdList // 推荐页面穿插的广告
+    case guessYouLikeMoreList // 猜你喜欢更多
 }
 
 extension FMRecommendAPI: TargetType {
@@ -35,6 +36,7 @@ extension FMRecommendAPI: TargetType {
         case .recommendList: return "/discovery-firstpage/v2/explore/ts-1532411485052"
         case .recommendForYouList: return "/mobile/discovery/v4/recommend/albums"
         case .recommendAdList: return "/ting/feed/ts-1532656780625"
+        case .guessYouLikeMoreList: return "/discovery-firstpage/guessYouLike/list/ts-1534815616591"
         }
     }
 
@@ -86,6 +88,23 @@ extension FMRecommendAPI: TargetType {
                 "version":"6.5.3",
                 "xt": Int32(Date().timeIntervalSince1970)
             ]
+            /*
+             http://mobile.ximalaya.com/discovery-firstpage/guessYouLike/list/ts-1534815616591?appid=0&device=iPhone&deviceId=5DC0EF2A-01F6-41D1-8455-C4A1BF927E36&inreview=false&network=WIFI&operator=3&pageId=1&pageSize=20&scale=3&uid=124057809&version=6.5.3&xt=1534815616592%20HTTP/1.1
+             */
+        case .guessYouLikeMoreList:
+            parmeters = [
+                "device":"iPhone",
+                "appid":0,
+                "inreview":false,
+                "network":"WIFI",
+                "operator":3,
+                "pageId":1,
+                "pageSize":20,
+                "scale":3,
+                "uid":124057809,
+                "version":"6.5.3",
+                "xt": Int32(Date().timeIntervalSince1970),
+                "deviceId": UIDevice.current.identifierForVendor!.uuidString]
         }
 
 

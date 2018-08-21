@@ -1,0 +1,119 @@
+//
+//  FMPlayDetailController.swift
+//  XMLYFM
+//
+//  Created by Domo on 2018/8/21.
+//  Copyright © 2018年 知言网络. All rights reserved.
+//
+
+import UIKit
+import LTScrollView
+import HandyJSON
+import SwiftyJSON
+
+class FMPlayDetailController: UIViewController {
+    private var playDetailAlbum:FMPlayDetailAlbumModel?
+    private var playDetailUser:FMPlayDetailUserModel?
+    private var playDetailTracks:FMPlayDetailTracksModel?
+    //Mark:- headerView
+    private lazy var headerView:FMPlayDetailHeaderView = {
+        let view = FMPlayDetailHeaderView.init(frame: CGRect(x:0, y:0, width:YYScreenWidth, height:240))
+        return view
+    }()
+   private let oneVc = PlayDetailIntroController()
+   private let twoVc = PlayDetailProgramController()
+   private let threeVc = PlayDetailLikeController()
+   private let fourVc = PlayDetailCircleController()
+   private lazy var viewControllers: [UIViewController] = {
+//        let oneVc = PlayDetailIntroController()
+//        let twoVc = PlayDetailProgramController()
+//        let threeVc = PlayDetailLikeController()
+//        let fourVc = PlayDetailCircleController()
+        return [oneVc, twoVc, threeVc,fourVc]
+    }()
+
+    private lazy var titles: [String] = {
+        return ["简介", "节目", "找相似","圈子"]
+    }()
+
+    private lazy var layout: LTLayout = {
+        let layout = LTLayout()
+        layout.isAverage = true
+        layout.sliderWidth = 80
+        layout.titleViewBgColor = UIColor.white
+        layout.titleColor = UIColor(r: 178, g: 178, b: 178)
+        layout.titleSelectColor = UIColor(r: 16, g: 16, b: 16)
+        layout.bottomLineColor = UIColor.red
+        layout.sliderHeight = 56
+        /* 更多属性设置请参考 LTLayout 中 public 属性说明 */
+        return layout
+    }()
+
+    private lazy var advancedManager: LTAdvancedManager = {
+        let statusBarH = UIApplication.shared.statusBarFrame.size.height
+        let advancedManager = LTAdvancedManager(frame: CGRect(x: 0, y: 0, width: YYScreenWidth, height: YYScreenHeigth), viewControllers: viewControllers, titles: titles, currentViewController: self, layout: layout, headerViewHandle: {[weak self] in
+            guard let strongSelf = self else { return UIView() }
+            let headerView = strongSelf.headerView
+            return headerView
+        })
+        /* 设置代理 监听滚动 */
+        advancedManager.delegate = self
+        /* 设置悬停位置 */
+        advancedManager.hoverY = 0
+        /* 点击切换滚动过程动画 */
+        //        advancedManager.isClickScrollAnimation = true
+        /* 代码设置滚动到第几个位置 */
+        //        advancedManager.scrollToIndex(index: viewControllers.count - 1)
+        return advancedManager
+    }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        self.automaticallyAdjustsScrollViewInsets = false
+        view.addSubview(advancedManager)
+        advancedManagerConfig()
+        self.navBarBackgroundAlpha = 0
+        loadData()
+    }
+    func loadData(){
+        FMPlayDetailProvider.request(FMPlayDetailAPI.playDetailData(albumId:12825974)) { result in
+            if case let .success(response) = result {
+                //解析数据
+                let data = try? response.mapJSON()
+                let json = JSON(data!)
+                if let playDetailAlbum = JSONDeserializer<FMPlayDetailAlbumModel>.deserializeFrom(json: json["data"]["album"].description) { // 从字符串转换为对象实例
+                    self.playDetailAlbum = playDetailAlbum
+                }
+                if let playDetailUser = JSONDeserializer<FMPlayDetailUserModel>.deserializeFrom(json: json["data"]["user"].description) { // 从字符串转换为对象实例
+                    self.playDetailUser = playDetailUser
+                }
+                if let playDetailTracks = JSONDeserializer<FMPlayDetailTracksModel>.deserializeFrom(json: json["data"]["tracks"].description) { // 从字符串转换为对象实例
+                    self.playDetailTracks = playDetailTracks
+                }
+                //传值给headerView
+                self.headerView.playDetailAlbumModel = self.playDetailAlbum
+                //传值给简介界面
+                self.oneVc.playDetailAlbumModel = self.playDetailAlbum
+            }
+        }
+    }
+
+    deinit {
+        print("FMFindController < --> deinit")
+    }
+}
+
+extension FMPlayDetailController : LTAdvancedScrollViewDelegate {
+    //MARK: 具体使用请参考以下
+    private func advancedManagerConfig() {
+        //MARK: 选中事件
+        advancedManager.advancedDidSelectIndexHandle = {
+            print("选中了 -> \($0)")
+        }
+    }
+    
+    func glt_scrollViewOffsetY(_ offsetY: CGFloat) {
+        //        print("offset --> ", offsetY)
+    }
+}
+

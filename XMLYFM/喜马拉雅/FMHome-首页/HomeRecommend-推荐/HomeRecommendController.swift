@@ -108,6 +108,7 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
                 cell.focusModel = viewModel.focus
                 cell.squareList = viewModel.squareList
                 cell.topBuzzListData = viewModel.topBuzzList
+                cell.delegate = self
                 return cell
         }else if moduleType == "guessYouLike" || moduleType == "paidCategory" || moduleType == "categoriesForLong" || moduleType == "cityCategory"{
                 let cell:FMRecommendGuessLikeCell = collectionView.dequeueReusableCell(withReuseIdentifier: FMRecommendGuessLikeCellID, for: indexPath) as! FMRecommendGuessLikeCell
@@ -144,6 +145,12 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
 
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let moduleType = viewModel.homeRecommendList?[indexPath.section].moduleType
+        let vc = FMPlayDetailController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     //每个分区的内边距
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return viewModel.insetForSectionAt(section: section)
@@ -173,9 +180,32 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let moduleType = viewModel.homeRecommendList?[indexPath.section].moduleType
         if kind == UICollectionElementKindSectionHeader {
             let headerView : FMRecommendHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: FMRecommendHeaderCellID, for: indexPath) as! FMRecommendHeaderView
             headerView.homeRecommendList = viewModel.homeRecommendList?[indexPath.section]
+            // 分区头右边更多按钮点击跳转
+            headerView.headerMoreBtnClick = {[weak self]() in
+                if moduleType == "guessYouLike"{
+                    let vc = HomeGuessYouLikeMoreController()
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }else if moduleType == "paidCategory" {
+                    let vc = HomeVIPController(isRecommendPush:true)
+                    vc.title = "精品"
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }else if moduleType == "live"{
+                    let vc = HomeLiveController()
+                    vc.title = "直播"
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }else {
+                    guard let categoryId = self?.viewModel.homeRecommendList?[indexPath.section].target?.categoryId else {return}
+                    if categoryId != 0 {
+                        let vc = ClassifySubMenuController(categoryId:categoryId)
+                        vc.title = self?.viewModel.homeRecommendList?[indexPath.section].title
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+            }
             return headerView
         }else if kind == UICollectionElementKindSectionFooter {
             let footerView : FMRecommendFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: FMRecommendFooterViewID, for: indexPath) as! FMRecommendFooterView
@@ -184,3 +214,14 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
         return UICollectionReusableView()
     }
 }
+
+// Mark:- 点击顶部分类按钮进入相对应界面
+extension HomeRecommendController:FMRecommendHeaderCellDelegate {
+    func recommendHeaderBtnClick(categoryId:String){
+        let vc = ClassifySubMenuController(categoryId:Int(categoryId)!)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
+

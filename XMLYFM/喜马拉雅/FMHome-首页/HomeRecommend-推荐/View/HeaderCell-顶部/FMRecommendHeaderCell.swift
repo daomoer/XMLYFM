@@ -9,8 +9,14 @@
 import UIKit
 import FSPagerView
 
+/// 添加按钮点击代理方法
+protocol FMRecommendHeaderCellDelegate:NSObjectProtocol {
+    func recommendHeaderBtnClick(categoryId:String)
+}
+
 class FMRecommendHeaderCell: UICollectionViewCell {
-    
+    weak var delegate : FMRecommendHeaderCellDelegate?
+
     private var focus:FocusModel?
     private var square:[SquareModel]?
     private var topBuzzList:[TopBuzzModel]?
@@ -139,5 +145,48 @@ extension FMRecommendHeaderCell: UICollectionViewDelegate, UICollectionViewDataS
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let string = self.square?[indexPath.row].properties?.uri else {return}
+        let categoryId:String = getUrlCategoryId(url:string)
+        print(categoryId)
+        delegate?.recommendHeaderBtnClick(categoryId:categoryId)
+    }
+
+    func getUrlCategoryId(url:String) -> String {
+                // 判断是否有参数
+                if !url.contains("?") {
+                    return ""
+                }
+                var params = [String: Any]()
+                // 截取参数
+                let split = url.split(separator: "?")
+                let string = split[1]
+                // 判断参数是单个参数还是多个参数
+                if string.contains("&") {
+                    // 多个参数，分割参数
+                    let urlComponents = string.split(separator: "&")
+                    // 遍历参数
+                    for keyValuePair in urlComponents {
+                        // 生成Key/Value
+                        let pairComponents = keyValuePair.split(separator: "=")
+                        let key:String = String(pairComponents[0])
+                        let value:String = String(pairComponents[1])
+                       
+                        params[key] = value
+                    }
+                } else {
+                    // 单个参数
+                    let pairComponents = string.split(separator: "=")
+                    // 判断是否有值
+                    if pairComponents.count == 1 {
+                        return "nil"
+                    }
+
+                    let key:String = String(pairComponents[0])
+                    let value:String = String(pairComponents[1])
+                    params[key] = value as AnyObject
+                }
+        return params["category_id"] as! String
+    }
 }
 
