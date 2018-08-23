@@ -16,13 +16,14 @@ use_frameworks!
     pod 'JXMarqueeView'
     #滚动页
     pod 'LTScrollView'
-    #pod 'MJRefresh'
+    pod 'MJRefresh'
     #pod 'SkeletonView'
     #消息提示
     pod 'SwiftMessages'
     #pod 'YYKit'
-    #pod 'SVProgressHUD'
-
+    pod 'SVProgressHUD'
+    #播放网络音频
+    pod 'StreamingKit'
 
 end
 
