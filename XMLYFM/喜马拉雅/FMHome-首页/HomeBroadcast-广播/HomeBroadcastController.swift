@@ -37,6 +37,7 @@ class HomeBroadcastController: HomeBaseViewController {
 //        collection.register(RadioCategoriesCell.self, forCellWithReuseIdentifier:RadioCategoriesCellID)
         collection.register(RadioSquareResultsCell.self, forCellWithReuseIdentifier:RadioSquareResultsCellID)
         
+        collection.uHead = URefreshHeader{ [weak self] in self?.loadData() }
         return collection
     }()
     
@@ -53,12 +54,14 @@ class HomeBroadcastController: HomeBaseViewController {
          make.top.equalToSuperview()
          make.height.equalToSuperview()
         }
+        self.collectionView.uHead.beginRefreshing()
         loadData()
     }
     
     func loadData() {
         // 加载数据
         viewModel.updataBlock = { [unowned self] in
+            self.collectionView.uHead.endRefreshing()
             // 更新列表数据
             self.collectionView.reloadData()
         }

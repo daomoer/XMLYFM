@@ -189,14 +189,14 @@ extension FMMineController : UITableViewDelegate, UITableViewDataSource {
 
 /// 首页视图左消息，右设置 按钮点击代理方法
 extension FMMineController : FMMineHeaderViewDelegate {
-    func msgBtnClick() {
-        
-    }
-    
-    func setBtnClick() {
-        let setVC = MineSetController()
-        self.navigationController?.pushViewController(setVC, animated: true)
-    }
+//    func msgBtnClick() {
+//        
+//    }
+//    
+//    func setBtnClick() {
+//        let setVC = MineSetController()
+//        self.navigationController?.pushViewController(setVC, animated: true)
+//    }
     
     func shopBtnClick(tag:Int) {
         

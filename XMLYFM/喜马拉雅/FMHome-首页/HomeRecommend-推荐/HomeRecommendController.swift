@@ -45,7 +45,7 @@ class HomeRecommendController: HomeBaseViewController {
         collection.register(FMOneKeyListenCell.self, forCellWithReuseIdentifier: FMOneKeyListenCellID)
         collection.register(FMRecommendForYouCell.self, forCellWithReuseIdentifier: FMRecommendForYouCellID)
         collection.register(HomeRecommendLiveCell.self, forCellWithReuseIdentifier: HomeRecommendLiveCellID)
-        
+        collection.uHead = URefreshHeader{ [weak self] in self?.loadData() }
         return collection
     }()
     
@@ -60,33 +60,35 @@ class HomeRecommendController: HomeBaseViewController {
             make.width.height.equalToSuperview()
             make.center.equalToSuperview()
         }
+        self.collectionView.uHead.beginRefreshing()
         loadData()
-        loadRecommendAdData()
+//        loadRecommendAdData()
     }
     
     func loadData(){
         // 加载数据
         viewModel.updataBlock = { [unowned self] in
+            self.collectionView.uHead.endRefreshing()
             // 更新列表数据
             self.collectionView.reloadData()
         }
         viewModel.refreshDataSource()
     }
     
-    func loadRecommendAdData() {
-        //        //首页穿插广告接口请求
-        FMRecommendProvider.request(.recommendAdList) { result in
-        if case let .success(response) = result {
-        //解析数据
-            let data = try? response.mapJSON()
-            let json = JSON(data!)
-            if let advertList = JSONDeserializer<RecommnedAdvertModel>.deserializeModelArrayFrom(json: json["data"].description) { // 从字符串转换为对象实例
-                self.recommnedAdvertList = advertList as? [RecommnedAdvertModel]
-                self.collectionView.reloadData()
-            }
-        }
-      }
-    }
+//    func loadRecommendAdData() {
+//        //        //首页穿插广告接口请求
+//        FMRecommendProvider.request(.recommendAdList) { result in
+//        if case let .success(response) = result {
+//        //解析数据
+//            let data = try? response.mapJSON()
+//            let json = JSON(data!)
+//            if let advertList = JSONDeserializer<RecommnedAdvertModel>.deserializeModelArrayFrom(json: json["data"].description) { // 从字符串转换为对象实例
+//                self.recommnedAdvertList = advertList as? [RecommnedAdvertModel]
+//                self.collectionView.reloadData()
+//            }
+//        }
+//      }
+//    }
 }
 
 // MARK - collectionDelegate

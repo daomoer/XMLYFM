@@ -74,7 +74,7 @@ class FMPlayDetailHeaderView: UIView {
     // 播放数量图片
     private var numView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "playcount.png")
+        imageView.image = UIImage(named: "playWhite")
         return imageView
     }()
     
@@ -104,7 +104,7 @@ class FMPlayDetailHeaderView: UIView {
         self.imageView.addSubview(self.numView)
         self.numView.snp.makeConstraints { (make) in
             make.left.equalTo(5)
-            make.width.height.equalTo(16)
+            make.width.height.equalTo(18)
             make.bottom.equalToSuperview().offset(-5)
         }
         
@@ -127,7 +127,7 @@ class FMPlayDetailHeaderView: UIView {
         }
         
         self.blurImageView.addSubview(self.nickView)
-        self.nickView.image = UIImage(named: "声波")
+        self.nickView.image = UIImage(named: "album_ic_zhubo_14x14_")
         self.nickView.snp.makeConstraints { (make) in
             make.left.equalTo(self.titleLabel)
             make.width.height.equalTo(25)
@@ -176,6 +176,7 @@ class FMPlayDetailHeaderView: UIView {
     var playDetailAlbumModel:FMPlayDetailAlbumModel? {
         didSet{
             guard let model = playDetailAlbumModel else {return}
+            self.blurImageView.kf.setImage(with: URL(string: model.coverLarge!))
             self.imageView.kf.setImage(with: URL(string: model.coverLarge!))
             self.titleLabel.text = model.title
             self.nickLabel.text = model.nickname

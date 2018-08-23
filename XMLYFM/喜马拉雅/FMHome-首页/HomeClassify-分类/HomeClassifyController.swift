@@ -34,7 +34,7 @@ class HomeClassifyController: HomeBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.clear
         self.view.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { (make) in
             make.left.right.top.height.equalToSuperview()

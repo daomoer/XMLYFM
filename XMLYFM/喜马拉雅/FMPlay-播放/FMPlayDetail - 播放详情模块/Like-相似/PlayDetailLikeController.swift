@@ -7,29 +7,60 @@
 //
 
 import UIKit
+import LTScrollView
+import SwiftyJSON
+import HandyJSON
 
-class PlayDetailLikeController: UIViewController {
-
+class PlayDetailLikeController: UIViewController , LTTableViewProtocal{
+    private var albumResults:[ClassifyVerticalModel]?
+    private let PlayDetailLikeCellID = "PlayDetailLikeCell"
+    private lazy var tableView: UITableView = {
+        let tableView = tableViewConfig(CGRect(x: 0, y: 0, width:YYScreenWidth, height: YYScreenHeigth-64), self, self, nil)
+        tableView.register(PlayDetailLikeCell.self, forCellReuseIdentifier: PlayDetailLikeCellID)
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor.white
+        self.view.addSubview(tableView)
+        glt_scrollView = tableView
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
+        loadData()
     }
+    func loadData(){
+        FMPlayDetailProvider.request(.playDetailLikeList(albumId:12825974)) { result in
+            if case let .success(response) = result {
+                //解析数据
+                let data = try? response.mapJSON()
+                let json = JSON(data!)
+                if let mappedObject = JSONDeserializer<ClassifyVerticalModel>.deserializeModelArrayFrom(json: json["albums"].description) {
+                    self.albumResults = mappedObject as? [ClassifyVerticalModel]
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+extension PlayDetailLikeController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.albumResults?.count ?? 0
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell:PlayDetailLikeCell = tableView.dequeueReusableCell(withIdentifier: PlayDetailLikeCellID, for: indexPath) as! PlayDetailLikeCell
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.classifyVerticalModel = self.albumResults?[indexPath.row]
+            return cell
+    }
 }
+

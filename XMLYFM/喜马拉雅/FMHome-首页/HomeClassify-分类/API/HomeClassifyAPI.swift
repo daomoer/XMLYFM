@@ -9,6 +9,7 @@
 
 import Foundation
 import Moya
+import HandyJSON
 
 let HomeClassifProvider = MoyaProvider<HomeClassifyAPI>()
 
@@ -32,25 +33,8 @@ extension HomeClassifyAPI: TargetType {
         switch self {
         case .classifyList:
             return "/mobile/discovery/v5/categories/1532410996452?channel=ios-b1&code=43_310000_3100&device=iPhone&gender=9&version=6.5.3%20HTTP/1.1"
-//            return "/chaos/v2/feed/list/followings"
         }
     }
-    
-//
-//    public var method: Moya.Method { return .get }
-//    public var task: Task {
-//        let parmeters = [
-//            "sign":0,
-//            "size":10,
-//            "timeline":0,
-//            "uid":124057809,
-//            "ts": Int32(Date().timeIntervalSince1970)] as [String : Any]
-//        return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
-//    }
-//
-//    public var sampleData: Data { return "".data(using: String.Encoding.utf8)! }
-//    public var headers: [String : String]? { return nil }
-//
     
     //请求类型
     public var method: Moya.Method {

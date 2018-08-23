@@ -18,6 +18,7 @@ class FMPlayDetailController: UIViewController {
     //Mark:- headerView
     private lazy var headerView:FMPlayDetailHeaderView = {
         let view = FMPlayDetailHeaderView.init(frame: CGRect(x:0, y:0, width:YYScreenWidth, height:240))
+        view.backgroundColor = UIColor.white
         return view
     }()
    private let oneVc = PlayDetailIntroController()
@@ -25,10 +26,6 @@ class FMPlayDetailController: UIViewController {
    private let threeVc = PlayDetailLikeController()
    private let fourVc = PlayDetailCircleController()
    private lazy var viewControllers: [UIViewController] = {
-//        let oneVc = PlayDetailIntroController()
-//        let twoVc = PlayDetailProgramController()
-//        let threeVc = PlayDetailLikeController()
-//        let fourVc = PlayDetailCircleController()
         return [oneVc, twoVc, threeVc,fourVc]
     }()
 
@@ -51,7 +48,7 @@ class FMPlayDetailController: UIViewController {
 
     private lazy var advancedManager: LTAdvancedManager = {
         let statusBarH = UIApplication.shared.statusBarFrame.size.height
-        let advancedManager = LTAdvancedManager(frame: CGRect(x: 0, y: 0, width: YYScreenWidth, height: YYScreenHeigth), viewControllers: viewControllers, titles: titles, currentViewController: self, layout: layout, headerViewHandle: {[weak self] in
+        let advancedManager = LTAdvancedManager(frame: CGRect(x: 0, y: 64, width: YYScreenWidth, height: YYScreenHeigth-64), viewControllers: viewControllers, titles: titles, currentViewController: self, layout: layout, headerViewHandle: {[weak self] in
             guard let strongSelf = self else { return UIView() }
             let headerView = strongSelf.headerView
             return headerView
@@ -69,10 +66,14 @@ class FMPlayDetailController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
 //        self.automaticallyAdjustsScrollViewInsets = false
         view.addSubview(advancedManager)
         advancedManagerConfig()
-        self.navBarBackgroundAlpha = 0
+//        self.navBarBackgroundAlpha = 0
+//        for vc in viewControllers{
+//            self.addChildViewController(vc)
+//        }
         loadData()
     }
     func loadData(){
@@ -81,6 +82,9 @@ class FMPlayDetailController: UIViewController {
                 //解析数据
                 let data = try? response.mapJSON()
                 let json = JSON(data!)
+//                if let playDetailModel = JSONDeserializer<FMPlayDetailModel>.deserializeFrom(json: json["data"].description) { // 从字符串转换为对象实例
+//                    self.playDetailModel = playDetailModel
+//                }
                 if let playDetailAlbum = JSONDeserializer<FMPlayDetailAlbumModel>.deserializeFrom(json: json["data"]["album"].description) { // 从字符串转换为对象实例
                     self.playDetailAlbum = playDetailAlbum
                 }
@@ -94,6 +98,9 @@ class FMPlayDetailController: UIViewController {
                 self.headerView.playDetailAlbumModel = self.playDetailAlbum
                 //传值给简介界面
                 self.oneVc.playDetailAlbumModel = self.playDetailAlbum
+                self.oneVc.playDetailUserModel = self.playDetailUser
+                //传值给节目界面
+                self.twoVc.playDetailTracksModel = self.playDetailTracks
             }
         }
     }

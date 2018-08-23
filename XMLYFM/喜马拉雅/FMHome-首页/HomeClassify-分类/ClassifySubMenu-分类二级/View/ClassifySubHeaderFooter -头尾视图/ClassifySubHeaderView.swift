@@ -26,13 +26,7 @@ class ClassifySubHeaderView: UICollectionReusableView {
     // 收听全部
     private var allBtn:UIButton = {
         let button = UIButton.init(type: UIButtonType.custom)
-        button.setTitle("收听全部", for: UIControlState.normal)
-        button.setTitleColor(UIColor.white, for: UIControlState.normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        button.setImage(UIImage(named: "playWhite"), for: UIControlState.normal)
-        button.imageEdgeInsets = UIEdgeInsetsMake(2, 5, 2, 0)
-        button.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0)
-        button.backgroundColor = DominantColor
+        button.setImage(UIImage(named: "category_rec_play_all_122x46_"), for: UIControlState.normal)
         button.isHidden = true
         return button
     }()
@@ -66,7 +60,7 @@ class ClassifySubHeaderView: UICollectionReusableView {
         self.allBtn.snp.makeConstraints { (make) in
             make.right.equalTo(-15)
             make.top.equalTo(5)
-            make.width.equalTo(110)
+            make.width.equalTo(80)
             make.height.equalTo(30)
         }
     }

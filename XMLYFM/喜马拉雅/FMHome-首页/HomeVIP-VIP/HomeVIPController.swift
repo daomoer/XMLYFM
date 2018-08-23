@@ -55,7 +55,7 @@ class HomeVIPController: HomeBaseViewController {
         tableView.register(HomeVipCategoriesCell.self, forCellReuseIdentifier: HomeVipCategoriesCellID)
         tableView.register(HomeVipHotCell.self, forCellReuseIdentifier: HomeVipHotCellID)
         tableView.register(HomeVipEnjoyCell.self, forCellReuseIdentifier: HomeVipEnjoyCellID)
-        
+        tableView.uHead = URefreshHeader{ [weak self] in self?.loadData() }
         return tableView
     }()
     
@@ -66,12 +66,15 @@ class HomeVIPController: HomeBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(self.tableView)
+        //刚进页面进行刷新
+        self.tableView.uHead.beginRefreshing()
         loadData()
     }
     
     func loadData() {
         // 加载数据
         viewModel.updataBlock = { [unowned self] in
+            self.tableView.uHead.endRefreshing()
             // 更新列表数据
             self.tableView.reloadData()
         }

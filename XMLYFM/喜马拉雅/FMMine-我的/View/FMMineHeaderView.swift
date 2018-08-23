@@ -10,8 +10,8 @@ import UIKit
 
 /// 添加按钮点击代理方法
 protocol FMMineHeaderViewDelegate:NSObjectProtocol {
-    func msgBtnClick()
-    func setBtnClick()
+//    func msgBtnClick()
+//    func setBtnClick()
     func shopBtnClick(tag:Int)
 }
 
@@ -19,22 +19,22 @@ protocol FMMineHeaderViewDelegate:NSObjectProtocol {
 class FMMineHeaderView: UIView {
     weak var delegate : FMMineHeaderViewDelegate?
 
-    // 消息按钮
-    lazy var msgBtn:UIButton = {
-        let button = UIButton.init(type: UIButtonType.custom)
-        button.setImage(UIImage(named: "msg"), for: UIControlState.normal)
-        button.addTarget(self, action: #selector(msgButtonClick), for: UIControlEvents.touchUpInside)
-        return button
-    }()
-
-    // 设置按钮
-    lazy var setBtn:UIButton = {
-        let button = UIButton.init(type: UIButtonType.custom)
-        button.setImage(UIImage(named: "set"), for: UIControlState.normal)
-        button.addTarget(self, action: #selector(setButtonClick), for: UIControlEvents.touchUpInside)
-        return button
-    }()
-    
+//    // 消息按钮
+//    lazy var msgBtn:UIButton = {
+//        let button = UIButton.init(type: UIButtonType.custom)
+//        button.setImage(UIImage(named: "msg"), for: UIControlState.normal)
+//        button.addTarget(self, action: #selector(msgButtonClick), for: UIControlEvents.touchUpInside)
+//        return button
+//    }()
+//
+//    // 设置按钮
+//    lazy var setBtn:UIButton = {
+//        let button = UIButton.init(type: UIButtonType.custom)
+//        button.setImage(UIImage(named: "set"), for: UIControlState.normal)
+//        button.addTarget(self, action: #selector(setButtonClick), for: UIControlEvents.touchUpInside)
+//        return button
+//    }()
+//
     /// 上下浮动的vip标签view
     private lazy var animationView:VipAnimationView = {
         let view = VipAnimationView()
@@ -107,18 +107,18 @@ class FMMineHeaderView: UIView {
     }
     
     func setUpUI(){
-        self.addSubview(self.msgBtn)
-        self.msgBtn.snp.makeConstraints { (make) in
-            make.left.equalTo(20)
-            make.top.equalTo(27)
-            make.width.height.equalTo(30)
-        }
-        self.addSubview(self.setBtn)
-        self.setBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(27)
-            make.right.equalTo(-20)
-            make.width.height.equalTo(30)
-        }
+//        self.addSubview(self.msgBtn)
+//        self.msgBtn.snp.makeConstraints { (make) in
+//            make.left.equalTo(20)
+//            make.top.equalTo(27)
+//            make.width.height.equalTo(30)
+//        }
+//        self.addSubview(self.setBtn)
+//        self.setBtn.snp.makeConstraints { (make) in
+//            make.top.equalTo(27)
+//            make.right.equalTo(-20)
+//            make.width.height.equalTo(30)
+//        }
         
         self.addSubview(self.animationView)
         self.animationView.layer.masksToBounds = true
@@ -234,15 +234,15 @@ class FMMineHeaderView: UIView {
         self.animationView.layer.removeAllAnimations()
     }
     
-    //Mark: - 消息点击事件
-    @objc func msgButtonClick() {
-        delegate?.msgBtnClick()
-    }
-    //Mark: - 设置点击事件
-    @objc func setButtonClick() {
-        delegate?.setBtnClick()
-    }
-    
+//    //Mark: - 消息点击事件
+//    @objc func msgButtonClick() {
+//        delegate?.msgBtnClick()
+//    }
+//    //Mark: - 设置点击事件
+//    @objc func setButtonClick() {
+//        delegate?.setBtnClick()
+//    }
+//    
     //Mark: - 购买等按钮点击事件
     @objc func gridBtnClick(button:UIButton){
         delegate?.shopBtnClick(tag: button.tag)

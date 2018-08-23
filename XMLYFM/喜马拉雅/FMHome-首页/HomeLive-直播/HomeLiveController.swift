@@ -36,7 +36,7 @@ class HomeLiveController: HomeBaseViewController {
         collection.register(HomeLiveGridCell.self, forCellWithReuseIdentifier:HomeLiveGridCellID)
         collection.register(HomeLiveBannerCell.self, forCellWithReuseIdentifier:HomeLiveBannerCellID)
         collection.register(HomeLiveRankCell.self, forCellWithReuseIdentifier:HomeLiveRankCellID)
-        
+        collection.uHead = URefreshHeader{ [weak self] in self?.loadLiveData() }
         return collection
     }()
     
@@ -54,6 +54,8 @@ class HomeLiveController: HomeBaseViewController {
             make.top.bottom.equalToSuperview()
             make.right.equalToSuperview().offset(-15)
         }
+        //刚进页面进行刷新
+        self.collectionView.uHead.beginRefreshing()
         loadLiveData()
     }
     
@@ -61,6 +63,7 @@ class HomeLiveController: HomeBaseViewController {
         
         // 加载数据
         viewModel.updataBlock = { [unowned self] in
+            self.collectionView.uHead.endRefreshing()
             // 更新列表数据
             self.collectionView.reloadData()
         }

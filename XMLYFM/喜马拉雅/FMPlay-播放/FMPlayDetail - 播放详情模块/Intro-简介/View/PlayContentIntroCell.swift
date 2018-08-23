@@ -15,8 +15,9 @@ class PlayContentIntroCell: UITableViewCell {
         return label
     }()
     // 内容详情
-    private lazy var subLabel:UILabel = {
-        let label = UILabel()
+    private lazy var subLabel:YYCustomLabel = {
+        let label = YYCustomLabel()
+        label.numberOfLines = 0
         return label
     }()
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -37,6 +38,14 @@ class PlayContentIntroCell: UITableViewCell {
             make.bottom.right.equalToSuperview().offset(-15)
         }
     }
+    
+    var playDetailAlbumModel:FMPlayDetailAlbumModel? {
+        didSet{
+            guard let model = playDetailAlbumModel else {return}
+            self.subLabel.text = model.shortIntro
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
