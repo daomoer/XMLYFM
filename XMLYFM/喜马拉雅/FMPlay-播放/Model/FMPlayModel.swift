@@ -19,15 +19,110 @@ struct FMPlayModel:HandyJSON {
 }
 
 struct FMPlayAlbumInfo:HandyJSON {
-    
+    var albumId:Int = 0
+    var categoryId:Int = 0
+    var createdAt:Int = 0
+    var saleScope:Int = 0
+    var serializeStatus:Int = 0
+    var status:Int = 0
+    var uid:Int = 0
+    var updatedAt:Int = 0
+    var vipFreeType:Int = 0
+    var hasNew:Bool = false
+    var isAlbumOpenGift:Bool = false
+    var isAuthorized:Bool = false
+    var isDraft:Bool = false
+    var isFavorite:Bool = false
+    var isPaid:Bool = false
+
+    var coverLarge:String?
+    var coverMiddle:String?
+    var coverOrigin:String?
+    var coverSmall:String?
+    var coverWebLarge:String?
+    var intro:String?
+    var tags:String?
+    var title:String?
 }
 
 struct FMPlayAssociationAlbumsInfo:HandyJSON {
-    
+    var isDraft:Bool = false
+    var albumId:Int = 0
+    var uid:Int = 0
+    var updatedAt:Int = 0
+    var vipFreeType:Int = 0
+
+    var coverMiddle:String?
+    var coverSmall:String?
+    var intro:String?
+    var recSrc:String?
+    var recTrack:String?
+    var title:String?
+
 }
+
 struct FMPlayNoCacheInfo:HandyJSON {
-    
+    var recAlbumsPanelTitle:String?
+    var associationAlbumsInfo:[FMPlayAssociationAlbumsInfo]?
+    var communityInfo:FMPlayCommunityInfo?
+    var commentInfo:FMPlayCommentInfoList?
 }
+struct FMPlayCommentInfoList:HandyJSON {
+   var list:[FMPlayCommentInfo]?
+}
+struct FMPlayCommentInfo:HandyJSON {
+    var createdAt:Int = 0
+    var id:Int = 0
+    var likes:Int = 0
+    var replyCount:Int = 0
+    var trackId:Int = 0
+    var trackUid:Int = 0
+    var track_id:Int = 0
+    var uid:Int = 0
+    var updatedAt:Int = 0
+    var content:String?
+    var nickname:String?
+    var smallHeader:String?
+    var isVip:Bool = false
+    var liked:Bool = false
+    var replies:[Replies]?
+}
+struct Replies:HandyJSON {
+    var content:String?
+    var nickname:String?
+    var pNickName:String?
+    var smallHeader:String?
+    var isVip:Bool = false
+    var liked:Bool = false
+
+    var createdAt:Int = 0
+    var id:Int = 0
+    var likes:Int = 0
+    var trackId:Int = 0
+    var trackUid:Int = 0
+    var track_id:Int = 0
+    var uid:Int = 0
+    var updatedAt:Int = 0
+    var parentId:Int = 0
+    var parentUid:Int = 0
+    var replyCount:Int = 0
+}
+
+
+struct FMPlayCommunityInfo:HandyJSON {
+    var articleCount:Int = 0
+    var id:Int = 0
+    var memberCount:Int = 0
+    var sectionId:Int = 0
+    var isJoin:Bool = false
+    var introduce:String?
+    var logo:String?
+    var logoMiddle:String?
+    var logoSmall:String?
+    var url:String?
+    var name:String?
+}
+
 struct FMPlayTrackInfo:HandyJSON {
     var albumId:Int = 0
     var bulletSwitchType:Int = 0

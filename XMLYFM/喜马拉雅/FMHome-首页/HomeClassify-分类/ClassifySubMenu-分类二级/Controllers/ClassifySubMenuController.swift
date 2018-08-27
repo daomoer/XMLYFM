@@ -14,10 +14,12 @@ import DNSPageView
 /// 分类二级界面主页面
 class ClassifySubMenuController: UIViewController {
     private var categoryId: Int = 0
+    private var isVipPush:Bool = false
     
-    convenience init(categoryId: Int = 0) {
+    convenience init(categoryId: Int = 0,isVipPush:Bool = false) {
         self.init()
         self.categoryId = categoryId
+        self.isVipPush = isVipPush
     }
     
     private var Keywords:[ClassifySubMenuKeywords]?
@@ -43,7 +45,9 @@ class ClassifySubMenuController: UIViewController {
                     for keyword in self.Keywords! {
                         self.nameArray.add(keyword.keywordName!)
                     }
-                    self.nameArray.insert("推荐", at: 0)
+                    if !self.isVipPush{
+                        self.nameArray.insert("推荐", at: 0)
+                    }
                     self.initHeaderView()
              }
           }
@@ -68,11 +72,12 @@ class ClassifySubMenuController: UIViewController {
             let controller = ClassifySubContentController(keywordId:keyword.keywordId, categoryId:keyword.categoryId)
             viewControllers.append(controller)
         }
-        
-        // 这里需要插入推荐的控制器，因为接口数据中并不含有推荐
-        let categoryId = self.Keywords?.last?.categoryId
-        viewControllers.insert(ClassifySubRecommendController(categoryId:categoryId!), at: 0)
-        
+        if !self.isVipPush{
+            // 这里需要插入推荐的控制器，因为接口数据中并不含有推荐
+            let categoryId = self.Keywords?.last?.categoryId
+            viewControllers.insert(ClassifySubRecommendController(categoryId:categoryId!), at: 0)
+        }
+     
         for vc in viewControllers{
             self.addChildViewController(vc)
         }

@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import SwiftyJSON
+import HandyJSON
 
 class HomeRecommendLiveCell: UICollectionViewCell {
     private var live:[LiveModel]?
     private let RecommendLiveCellID = "RecommendLiveCell"
-    private var changeBtn:UIButton = {
+    private lazy var changeBtn:UIButton = {
         let button = UIButton.init(type: UIButtonType.custom)
         button.setTitle("换一批", for: UIControlState.normal)
         button.setTitleColor(DominantColor, for: UIControlState.normal)
         button.backgroundColor = UIColor.init(red: 254/255.0, green: 232/255.0, blue: 227/255.0, alpha: 1)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 5.0
+        button.addTarget(self, action: #selector(updataBtnClick(button:)), for: UIControlEvents.touchUpInside)
         return button
     }()
     
@@ -70,6 +73,21 @@ class HomeRecommendLiveCell: UICollectionViewCell {
             guard let model = liveList else { return }
             self.live = model
             self.collectionView.reloadData()
+        }
+    }
+    // 更换一批按钮刷新cell
+    @objc func updataBtnClick(button:UIButton){
+        //首页推荐接口请求
+        FMRecommendProvider.request(.changeLiveList) { result in
+            if case let .success(response) = result {
+                //解析数据
+                let data = try? response.mapJSON()
+                let json = JSON(data!)
+                if let mappedObject = JSONDeserializer<LiveModel>.deserializeModelArrayFrom(json: json["data"]["list"].description) {
+                    self.live = mappedObject as? [LiveModel]
+                    self.collectionView.reloadData()
+                }
+            }
         }
     }
 }

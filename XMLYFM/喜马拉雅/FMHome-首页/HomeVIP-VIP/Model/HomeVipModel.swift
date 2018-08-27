@@ -67,8 +67,14 @@ struct CategoryBtnModel: HandyJSON {
     var subtitle: String?
     var title: String?
     var url: String?
+    var properties : CategoryPropertiesModel?
 }
 
+struct CategoryPropertiesModel:HandyJSON {
+    var isPaid:Bool = false
+    var type:String?
+    var uri:String?
+}
 
 struct CategoryList: HandyJSON {
     var calcDimension: String?

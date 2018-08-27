@@ -1,20 +1,29 @@
 //
-//  FMPlayHeaderView.swift
+//  FMPlayCell.swift
 //  XMLYFM
 //
-//  Created by Domo on 2018/8/23.
+//  Created by Domo on 2018/8/24.
 //  Copyright © 2018年 知言网络. All rights reserved.
 //
 
 import UIKit
 import StreamingKit
 
-class FMPlayHeaderView: UICollectionViewCell {
+class FMPlayCell: UICollectionViewCell {
     var playUrl:String?
-
+    var timer: Timer?
+    var displayLink: CADisplayLink?
+    // 是否是第一次播放
+    private var isFirstPlay:Bool = true
+    // 音频播放器
+   private lazy var audioPlayer:STKAudioPlayer={
+        let audioPlayer = STKAudioPlayer()
+    
+        return audioPlayer
+    }()
     // 标题
     private var titleLabel:UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.textAlignment = NSTextAlignment.center
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 20)
@@ -22,7 +31,7 @@ class FMPlayHeaderView: UICollectionViewCell {
     }()
     // 图片
     private var imageView:UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         return imageView
     }()
     //弹幕按钮
@@ -49,6 +58,12 @@ class FMPlayHeaderView: UICollectionViewCell {
         slider.setThumbImage(UIImage(named: "playProcessDot_n_7x16_"), for: .normal)
         slider.maximumTrackTintColor = UIColor.lightGray
         slider.minimumTrackTintColor = DominantColor
+        // 滑块滑动停止后才触发ValueChanged事件
+//        slider.isContinuous = false
+        
+        slider.addTarget(self, action: #selector(FMPlayCell.change(slider:)), for: UIControlEvents.valueChanged)
+        
+        slider.addTarget(self, action: #selector(FMPlayCell.sliderDragUp(sender:)), for: UIControlEvents.touchUpInside)
         return slider
     }()
     //当前时间
@@ -103,7 +118,7 @@ class FMPlayHeaderView: UICollectionViewCell {
         super.init(frame: frame)
         setUpUI()
     }
-
+    
     
     func setUpUI(){
         // 标题
@@ -121,7 +136,7 @@ class FMPlayHeaderView: UICollectionViewCell {
             make.top.equalTo(self.titleLabel.snp.bottom).offset(15)
             make.left.equalToSuperview().offset(60)
             make.right.equalToSuperview().offset(-60)
-            make.height.equalTo(YYScreenHeigth*0.8-260)
+            make.height.equalTo(YYScreenHeigth*0.7-260)
         }
         //弹幕按钮
         self.addSubview(self.barrageBtn)
@@ -153,7 +168,7 @@ class FMPlayHeaderView: UICollectionViewCell {
         }
         //当前时间
         self.addSubview(self.currentTime)
-        self.currentTime.text = "00:33"
+        self.currentTime.text = "00:00"
         self.currentTime.snp.makeConstraints { (make) in
             make.left.equalTo(self.slider)
             make.top.equalTo(self.slider.snp.bottom).offset(5)
@@ -215,12 +230,19 @@ class FMPlayHeaderView: UICollectionViewCell {
             self.playUrl = model.playUrl64
         }
     }
-
+    
     func getMMSSFromSS(duration:Int)->(String){
-        let str_minute = duration / 60
-        let str_second = duration % 60
-        let format_time = "\(str_minute):\(str_second)"
-        return format_time
+        var min = duration / 60
+        let sec = duration % 60
+        var hour : Int = 0
+        if min >= 60 {
+            hour = min / 60
+            min = min % 60
+            if hour > 0 {
+                return String(format: "%02d:%02d:%02d", hour, min, sec)
+            }
+        }
+        return String(format: "%02d:%02d", min, sec)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -228,8 +250,60 @@ class FMPlayHeaderView: UICollectionViewCell {
     }
     
     @objc func playBtn(button:UIButton){
-        let audioPlayer = STKAudioPlayer()
-        audioPlayer.play(URL(string: self.playUrl!)!)
+        button.isSelected = !button.isSelected
+        if button.isSelected {
+            button.setImage(UIImage(named: "toolbar_pause_n_p_78x78_"), for: UIControlState.normal)
+            if isFirstPlay {
+                self.audioPlayer.play(URL(string: self.playUrl!)!)
+                starTimer()
+                isFirstPlay = false
+            }else {
+                starTimer()
+                self.audioPlayer.resume()
+            }
+        }else{
+            button.setImage(UIImage(named: "toolbar_play_n_p_78x78_"), for: UIControlState.normal)
+            removeTimer()
+            self.audioPlayer.pause()
+        }
+   
     }
+    
+    func starTimer() {
+        displayLink = CADisplayLink(target: self, selector: #selector(updateCurrentLabel))
+        displayLink?.add(to: RunLoop.current, forMode: .commonModes)
+    }
+    
+    func removeTimer() {
+        displayLink?.invalidate()
+        displayLink = nil
+    }
+}
 
+extension FMPlayCell{
+    @objc func setUpTimesView() {
+        let currentTime:Int = Int(self.audioPlayer.progress)
+        self.currentTime.text = getMMSSFromSS(duration: currentTime)
+        let progress = Float(self.audioPlayer.progress / self.audioPlayer.duration)
+        slider.value = progress
+    }
+    @objc func updateCurrentLabel() {
+        let currentTime:Int = Int(self.audioPlayer.progress)
+        self.currentTime.text = getMMSSFromSS(duration: currentTime)
+        let progress = Float(self.audioPlayer.progress / self.audioPlayer.duration)
+        slider.value = progress
+    }
+    @objc func change(slider:UISlider) {
+        print("slider.value = %d",slider.value)
+//        self.audioPlayer.progress = slider.value
+//        self.audioPlayer.pause()
+        audioPlayer.seek(toTime: Double(slider.value * Float(self.audioPlayer.duration)))
+    }
+    
+    @objc func sliderDragUp(sender: UISlider) {
+        print("value:(sender.value)")
+//        starTimer()
+//        audioPlayer.seek(toTime: Double(slider.value))
+//        self.audioPlayer.resume()
+    }
 }

@@ -37,6 +37,7 @@ class ClassifySubContentController: UIViewController {
         collection.backgroundColor = UIColor.white
         // MARK -注册不同分区cell
         collection.register(ClassifySubVerticalCell.self, forCellWithReuseIdentifier: ClassifySubVerticalCellID)
+        collection.uHead = URefreshHeader{ [weak self] in self?.loadData() }
         return collection
     }()
     
@@ -47,6 +48,7 @@ class ClassifySubContentController: UIViewController {
             make.left.equalToSuperview().offset(15)
             make.right.top.bottom.equalToSuperview()
         }
+        self.collectionView.uHead.beginRefreshing()
         loadData()
     }
     
@@ -59,6 +61,7 @@ class ClassifySubContentController: UIViewController {
                 let json = JSON(data!)
                 if let mappedObject = JSONDeserializer<ClassifyVerticalModel>.deserializeModelArrayFrom(json:json["list"].description) { // 从字符串转换为对象实例
                     self.classifyVerticallist = mappedObject as? [ClassifyVerticalModel]
+                    self.collectionView.uHead.endRefreshing()
                     self.collectionView.reloadData()
                 }
             }

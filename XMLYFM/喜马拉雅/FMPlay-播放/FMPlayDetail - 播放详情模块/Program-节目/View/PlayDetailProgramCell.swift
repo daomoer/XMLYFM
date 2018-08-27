@@ -106,7 +106,7 @@ class PlayDetailProgramCell: UITableViewCell {
         self.playCountLabel.text = "175.4万"
         self.playCountLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self.playImage.snp.right).offset(2)
-            make.width.equalTo(40)
+            make.width.equalTo(50)
             make.height.equalTo(20)
             make.bottom.equalTo(-12)
         }

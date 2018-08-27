@@ -7,8 +7,14 @@
 //
 
 import UIKit
+/// 添加cell点击代理方法
+protocol HomeVipEnjoyCellDelegate:NSObjectProtocol {
+    func homeVipEnjoyCellItemClick(model:CategoryContents)
+}
 
 class HomeVipEnjoyCell: UITableViewCell {
+    weak var delegate : HomeVipEnjoyCellDelegate?
+
     private var categoryContents:[CategoryContents]?
 
     private let VipEnjoyCellID = "VipEnjoyCell"
@@ -73,6 +79,10 @@ extension HomeVipEnjoyCell: UICollectionViewDelegate, UICollectionViewDataSource
         let cell:VipEnjoyCell = collectionView.dequeueReusableCell(withReuseIdentifier: VipEnjoyCellID, for: indexPath) as! VipEnjoyCell
         cell.categoryContentsModel = self.categoryContents?[indexPath.row]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.homeVipEnjoyCellItemClick(model: (self.categoryContents?[indexPath.row])!)
     }
     
     //每个分区的内边距

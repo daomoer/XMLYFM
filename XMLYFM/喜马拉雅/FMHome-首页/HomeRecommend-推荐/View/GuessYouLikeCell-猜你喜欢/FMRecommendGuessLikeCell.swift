@@ -7,20 +7,31 @@
 //
 
 import UIKit
+import SwiftyJSON
+import HandyJSON
+
+/// 添加cell点击代理方法
+protocol FMRecommendGuessLikeCellDelegate:NSObjectProtocol {
+    func recommendGuessLikeCellItemClick(model:RecommendListModel)
+}
 
 class FMRecommendGuessLikeCell: UICollectionViewCell {
+    weak var delegate : FMRecommendGuessLikeCellDelegate?
+
     private var recommendList:[RecommendListModel]?
 
     private let FMGuessYouLikeCellID = "FMGuessYouLikeCell"
-    private var changeBtn:UIButton = {
+    private lazy var changeBtn:UIButton = {
         let button = UIButton.init(type: UIButtonType.custom)
         button.setTitle("换一批", for: UIControlState.normal)
         button.setTitleColor(DominantColor, for: UIControlState.normal)
         button.backgroundColor = UIColor.init(red: 254/255.0, green: 232/255.0, blue: 227/255.0, alpha: 1)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 5.0
+        button.addTarget(self, action: #selector(updataBtnClick(button:)), for: UIControlEvents.touchUpInside)
         return button
     }()
+    
     
     private lazy var collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
@@ -66,7 +77,23 @@ class FMRecommendGuessLikeCell: UICollectionViewCell {
             self.collectionView.reloadData()
         }
     }
+    // 更换一批按钮刷新cell
+    @objc func updataBtnClick(button:UIButton){
+        //首页推荐接口请求
+        FMRecommendProvider.request(.changeGuessYouLikeList) { result in
+            if case let .success(response) = result {
+                //解析数据
+                let data = try? response.mapJSON()
+                let json = JSON(data!)
+                if let mappedObject = JSONDeserializer<RecommendListModel>.deserializeModelArrayFrom(json: json["list"].description) {
+                    self.recommendList = mappedObject as? [RecommendListModel]
+                    self.collectionView.reloadData()
+                }
+            }
+        }
+    }
 }
+
 
 extension FMRecommendGuessLikeCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -77,6 +104,10 @@ extension FMRecommendGuessLikeCell: UICollectionViewDelegate, UICollectionViewDa
         let cell:FMGuessYouLikeCell = collectionView.dequeueReusableCell(withReuseIdentifier: FMGuessYouLikeCellID, for: indexPath) as! FMGuessYouLikeCell
         cell.recommendData = self.recommendList?[indexPath.row]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.recommendGuessLikeCellItemClick(model: (self.recommendList?[indexPath.row])!)
     }
     
     //每个分区的内边距

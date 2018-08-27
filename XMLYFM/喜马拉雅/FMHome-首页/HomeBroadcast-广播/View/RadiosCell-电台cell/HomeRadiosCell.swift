@@ -104,7 +104,8 @@ class HomeRadiosCell: UICollectionViewCell {
             guard let model = localRadioModel else { return }
             self.imageView.kf.setImage(with: URL(string: model.coverLarge!))
             self.titleLabel.text = model.name
-            self.subLabel.text = String(format: "正在直播:%@",model.programName!)
+            let programName = model.programName ?? ""
+            self.subLabel.text = String(format: "正在直播:%@",programName)
             var numString:String?
             if model.playCount > 100000000 {
                 numString = String(format: "%.1f亿", Double(model.playCount) / 100000000)
@@ -122,7 +123,8 @@ class HomeRadiosCell: UICollectionViewCell {
             guard let model = topRadioModel else { return }
             self.imageView.kf.setImage(with: URL(string: model.coverLarge!))
             self.titleLabel.text = model.name
-            self.subLabel.text = String(format: "正在直播:%@",model.programName!)
+            let programName = model.programName ?? ""
+            self.subLabel.text = String(format: "正在直播:%@",programName)
             var numString:String?
             if model.playCount > 100000000 {
                 numString = String(format: "%.1f亿", Double(model.playCount) / 100000000)

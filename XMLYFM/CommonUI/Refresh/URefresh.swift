@@ -24,16 +24,18 @@ extension UIScrollView {
 class URefreshHeader: MJRefreshGifHeader {
     override func prepare() {
         super.prepare()
-        setImages([UIImage(named: "logo_laya")!], for: .idle)
-        setImages([UIImage(named: "logo_xima")!], for: .pulling)
-        setImages([UIImage(named: "logo_laya")!,
-                   UIImage(named: "logo_xima")!,
-                   UIImage(named: "logo_laya")!,
-                   UIImage(named: "logo_xima")!,
-                   UIImage(named: "logo_laya")!,
-                   UIImage(named: "logo_xima")!,
-                   UIImage(named: "logo_laya")!,
-                   UIImage(named: "logo_xima")!], for: .refreshing)
+        setImages([UIImage(named: "pullToRefresh_0_80x60_")!], for: .idle)
+        setImages([UIImage(named: "pullToRefresh_0_80x60_")!], for: .pulling)
+        setImages([UIImage(named: "pullToRefresh_0_80x60_")!,
+                   UIImage(named: "pullToRefresh_1_80x60_")!,
+                   UIImage(named: "pullToRefresh_2_80x60_")!,
+                   UIImage(named: "pullToRefresh_3_80x60_")!,
+                   UIImage(named: "pullToRefresh_4_80x60_")!,
+                   UIImage(named: "pullToRefresh_5_80x60_")!,
+                   UIImage(named: "pullToRefresh_6_80x60_")!,
+                   UIImage(named: "pullToRefresh_7_80x60_")!,
+                   UIImage(named: "pullToRefresh_8_80x60_")!,
+                   UIImage(named: "pullToRefresh_9_80x60_")!], for: .refreshing)
         
         lastUpdatedTimeLabel.isHidden = true
         stateLabel.isHidden = true
@@ -53,7 +55,7 @@ class URefreshDiscoverFooter: MJRefreshBackGifFooter {
         super.prepare()
 //        backgroundColor = UIColor.init(red: 239/255.0, green: 239/255.0, blue: 239/255.0, alpha: 1)
         backgroundColor = UIColor.clear
-        setImages([UIImage(named: "logo_laya")!], for: .idle)
+        setImages([UIImage(named: "pullToRefresh_0_80x60_")!], for: .idle)
         stateLabel.isHidden = true
         refreshingBlock = { self.endRefreshing() }
     }
@@ -72,7 +74,7 @@ class URefreshTipKissFooter: MJRefreshBackFooter {
     
     lazy var imageView: UIImageView = {
         let iw = UIImageView()
-        iw.image = UIImage(named: "logo_xima")
+        iw.image = UIImage(named: "pullToRefresh_0_80x60_")
         return iw
     }()
     

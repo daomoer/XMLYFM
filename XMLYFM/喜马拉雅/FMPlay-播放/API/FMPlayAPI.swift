@@ -14,7 +14,7 @@ import HandyJSON
 let FMPlayProvider = MoyaProvider<FMPlayAPI>()
 
 enum FMPlayAPI {
-    case fmPlayData(albumId:Int,trackUid:Int)
+    case fmPlayData(albumId:Int,trackUid:Int, uid:Int)
 }
 
 extension FMPlayAPI: TargetType {
@@ -25,7 +25,8 @@ extension FMPlayAPI: TargetType {
     
     var path: String {
         switch self {
-        case .fmPlayData: return "/mobile/track/v2/playpage/8281672/ts-1535003263717"
+        case .fmPlayData(let trackUid):
+            return "/mobile/track/v2/playpage/\(trackUid)/ts-1535003263717"
         }
     }
     
@@ -39,16 +40,16 @@ extension FMPlayAPI: TargetType {
             "appid":0,
             "ac":"WIFI",
             "network":"WIFI",
-            "uid":124057809,
             "version":"6.5.3",
             "xt": Int32(Date().timeIntervalSince1970),
             "deviceId": UIDevice.current.identifierForVendor!.uuidString] as [String : Any]
         switch self {
-        case .fmPlayData(let albumId, let trackUid):
+        case .fmPlayData(let albumId, let trackUid, let uid):
             parmeters["albumId"] = albumId
             parmeters["trackUid"] = trackUid
+            parmeters["uid"] = uid
         }
-        
+        //http://adse.ximalaya.com/ting/direct_v2/ts-1535073885711?appid=0&device=iPhone&name=play_large&network=WIFI&operator=3&scale=3&trackid=8281672&version=6.5.3&xt=1535073885712 HTTP/1.1  粉丝福利
         return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
     }
     

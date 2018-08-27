@@ -12,6 +12,14 @@ import HandyJSON
 import SwiftyJSON
 
 class FMPlayDetailController: UIViewController {
+    // 外部传值请求接口如此那
+    private var albumId: Int = 0
+    
+    convenience init(albumId: Int = 0) {
+        self.init()
+        self.albumId = albumId
+    }
+    
     private var playDetailAlbum:FMPlayDetailAlbumModel?
     private var playDetailUser:FMPlayDetailUserModel?
     private var playDetailTracks:FMPlayDetailTracksModel?
@@ -77,7 +85,7 @@ class FMPlayDetailController: UIViewController {
         loadData()
     }
     func loadData(){
-        FMPlayDetailProvider.request(FMPlayDetailAPI.playDetailData(albumId:12825974)) { result in
+        FMPlayDetailProvider.request(FMPlayDetailAPI.playDetailData(albumId:self.albumId)) { result in
             if case let .success(response) = result {
                 //解析数据
                 let data = try? response.mapJSON()

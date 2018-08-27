@@ -15,16 +15,16 @@ let HomeBroadcastProvider = MoyaProvider<HomeBroadcastAPI>()
 //请求分类
 public enum HomeBroadcastAPI {
     case homeBroadcastList
+    case categoryBroadcastList(path:String)
+    case moreCategoryBroadcastList(categoryId:Int)
+
 }
 
 //请求配置
 extension HomeBroadcastAPI: TargetType {
     //服务器地址
     public var baseURL: URL {
-        switch self {
-        case .homeBroadcastList:
             return URL(string: "http://live.ximalaya.com")!
-        }
     }
     
     //各个请求的具体路径
@@ -32,6 +32,10 @@ extension HomeBroadcastAPI: TargetType {
         switch self {
         case .homeBroadcastList:
             return "/live-web/v5/homepage"
+        case .categoryBroadcastList(let path):
+            return path
+        case .moreCategoryBroadcastList:
+            return "/live-web/v2/radio/category"
         }
     }
     
@@ -42,9 +46,24 @@ extension HomeBroadcastAPI: TargetType {
     
     //请求任务事件（这里附带上参数）
     public var task: Task {
+        
         switch self {
         case .homeBroadcastList:
             return .requestPlain
+        case .categoryBroadcastList:
+            let parmeters = [
+                "device":"iPhone",
+                "pageNum":1,
+                "pageSize":30,
+                "provinceCode":"310000"] as [String : Any]
+            return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
+        case .moreCategoryBroadcastList(let categoryId):
+            var parmeters = [
+                "device":"iPhone",
+                "pageNum":1,
+                "pageSize":30] as [String : Any]
+            parmeters["categoryId"] = categoryId
+            return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
         }
     }
     

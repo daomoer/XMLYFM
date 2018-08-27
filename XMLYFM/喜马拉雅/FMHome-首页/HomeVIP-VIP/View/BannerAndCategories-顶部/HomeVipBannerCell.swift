@@ -8,8 +8,14 @@
 
 import UIKit
 import FSPagerView
+/// 添加cell点击代理方法
+protocol HomeVipBannerCellDelegate:NSObjectProtocol {
+    func homeVipBannerCellClick(url:String)
+}
 
 class HomeVipBannerCell: UITableViewCell {
+    weak var delegate : HomeVipBannerCellDelegate?
+
     var vipBanner: [FocusImagesData]?
     
     // MARK: - 懒加载滚动图片浏览器
@@ -61,6 +67,7 @@ extension HomeVipBannerCell: FSPagerViewDelegate, FSPagerViewDataSource {
     }
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        
+        let url:String = self.vipBanner?[index].link ?? ""
+        delegate?.homeVipBannerCellClick(url: url)
     }
 }

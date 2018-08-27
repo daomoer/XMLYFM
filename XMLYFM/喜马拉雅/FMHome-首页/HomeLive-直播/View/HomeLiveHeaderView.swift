@@ -10,8 +10,14 @@ import UIKit
 import SwiftyJSON
 import HandyJSON
 
+/// 添加cell点击代理方法
+protocol HomeLiveHeaderViewDelegate:NSObjectProtocol {
+    func homeLiveHeaderViewCategoryBtnClick(button:UIButton)
+}
+
 class HomeLiveHeaderView: UICollectionReusableView{
-    
+    weak var delegate : HomeLiveHeaderViewDelegate?
+
     private var btnArray = NSMutableArray()
     private var lineView : UIView = {
         let view = UIView()
@@ -69,6 +75,7 @@ class HomeLiveHeaderView: UICollectionReusableView{
                 (btn as AnyObject).setTitleColor(UIColor.lightGray, for: UIControlState.normal)
             }
         }
+        delegate?.homeLiveHeaderViewCategoryBtnClick(button: button)
     }
     
     @objc func moreBtnClick(){

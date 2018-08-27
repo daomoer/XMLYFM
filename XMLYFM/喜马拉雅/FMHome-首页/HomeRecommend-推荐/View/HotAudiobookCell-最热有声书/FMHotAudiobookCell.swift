@@ -7,12 +7,18 @@
 //
 
 import UIKit
+/// 添加cell点击代理方法
+protocol FMHotAudiobookCellDelegate:NSObjectProtocol {
+    func hotAudiobookCellItemClick(model:RecommendListModel)
+}
 
 class FMHotAudiobookCell: UICollectionViewCell {
+    weak var delegate : FMHotAudiobookCellDelegate?
+
     private var recommendList:[RecommendListModel]?
 
     private let HotAudiobookCellID = "HotAudiobookCell"
-    private var changeBtn:UIButton = {
+    private lazy var changeBtn:UIButton = {
         let button = UIButton.init(type: UIButtonType.custom)
         button.setTitle("换一批", for: UIControlState.normal)
         button.setTitleColor(DominantColor, for: UIControlState.normal)
@@ -77,6 +83,9 @@ extension FMHotAudiobookCell: UICollectionViewDelegate, UICollectionViewDataSour
         let cell:HotAudiobookCell = collectionView.dequeueReusableCell(withReuseIdentifier: HotAudiobookCellID, for: indexPath) as! HotAudiobookCell
         cell.recommendData = self.recommendList?[indexPath.row]
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.hotAudiobookCellItemClick(model: (self.recommendList?[indexPath.row])!)
     }
     
     //每个分区的内边距

@@ -66,6 +66,14 @@ extension PlayDetailProgramController : UITableViewDelegate, UITableViewDataSour
             cell.indexPath = indexPath
             return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let albumId = self.playDetailTracks?.list?[indexPath.row].albumId ?? 0
+        let trackUid = self.playDetailTracks?.list?[indexPath.row].trackId ?? 0
+        let uid = self.playDetailTracks?.list?[indexPath.row].uid ?? 0
+        let vc = FMPlayController(albumId:albumId, trackUid:trackUid, uid:uid)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 //    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 //        return 40
 //    }

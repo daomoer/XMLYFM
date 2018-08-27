@@ -11,7 +11,8 @@ import FSPagerView
 
 /// 添加按钮点击代理方法
 protocol FMRecommendHeaderCellDelegate:NSObjectProtocol {
-    func recommendHeaderBtnClick(categoryId:String)
+    func recommendHeaderBtnClick(categoryId:String,title:String,url:String)
+    func recommendHeaderBannerClick(url:String)
 }
 
 class FMRecommendHeaderCell: UICollectionViewCell {
@@ -109,7 +110,8 @@ extension FMRecommendHeaderCell: FSPagerViewDelegate, FSPagerViewDataSource {
     }
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-
+        let url:String = self.focus?.data?[index].link ?? ""
+        delegate?.recommendHeaderBannerClick(url: url)
     }
 }
 
@@ -146,10 +148,17 @@ extension FMRecommendHeaderCell: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let string = self.square?[indexPath.row].properties?.uri else {return}
+        guard let string = self.square?[indexPath.row].properties?.uri else {
+            let categoryId:String = "0"
+            let title:String = self.square?[indexPath.row].title ?? ""
+            let url:String = self.square?[indexPath.row].url ?? ""
+            delegate?.recommendHeaderBtnClick(categoryId:categoryId,title:title,url:url)
+            return
+        }
         let categoryId:String = getUrlCategoryId(url:string)
-        print(categoryId)
-        delegate?.recommendHeaderBtnClick(categoryId:categoryId)
+        let title:String = self.square?[indexPath.row].title ?? ""
+        let url:String = self.square?[indexPath.row].url ?? ""
+        delegate?.recommendHeaderBtnClick(categoryId:categoryId,title:title,url:url)
     }
 
     func getUrlCategoryId(url:String) -> String {

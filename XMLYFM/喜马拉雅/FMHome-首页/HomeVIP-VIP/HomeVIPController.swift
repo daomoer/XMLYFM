@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftMessages
 
 let HomeVipSectionBanner    = 0   // 滚动图片section
 let HomeVipSectionGrid      = 1   // 分类section
@@ -100,18 +101,22 @@ extension HomeVIPController: UITableViewDelegate, UITableViewDataSource {
         case HomeVipSectionBanner:
             let cell:HomeVipBannerCell = tableView.dequeueReusableCell(withIdentifier: HomeVipBannerCellID, for: indexPath) as! HomeVipBannerCell
             cell.vipBannerList = viewModel.focusImages
+            cell.delegate = self
             return cell
         case HomeVipSectionGrid:
             let cell:HomeVipCategoriesCell = tableView.dequeueReusableCell(withIdentifier: HomeVipCategoriesCellID, for: indexPath) as! HomeVipCategoriesCell
             cell.categoryBtnModel = viewModel.categoryBtnList
+            cell.delegate = self
             return cell
         case HomeVipSectionHot:
             let cell:HomeVipHotCell = tableView.dequeueReusableCell(withIdentifier: HomeVipHotCellID, for: indexPath) as! HomeVipHotCell
             cell.categoryContentsModel = viewModel.categoryList?[indexPath.section].list
+            cell.delegate = self
             return cell
         case HomeVipSectionEnjoy:
             let cell:HomeVipEnjoyCell = tableView.dequeueReusableCell(withIdentifier: HomeVipEnjoyCellID, for: indexPath) as! HomeVipEnjoyCell
             cell.categoryContentsModel = viewModel.categoryList?[indexPath.section].list
+            cell.delegate = self
             return cell
         default:
             let cell:HomeVIPCell = tableView.dequeueReusableCell(withIdentifier: HomeVIPCellID, for: indexPath) as! HomeVIPCell
@@ -120,18 +125,16 @@ extension HomeVIPController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = FMPlayDetailController(albumId: (viewModel.categoryList?[indexPath.section].list?[indexPath.row].albumId)!)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return viewModel.heightForHeaderInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let view = UIView()
-//        let label = UILabel.init(frame: CGRect(x:0,y:0,width: YYScreenWidth, height: 40))
-//        label.text = "第\(section)行"
-//        label.textColor = UIColor.red
-//        view.backgroundColor = UIColor.white
-//        view.addSubview(label)
-//        return view
         let headerView:HomeVipHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: HomeVipHeaderViewID) as! HomeVipHeaderView
         headerView.titStr = viewModel.categoryList?[section].title
         return headerView
@@ -142,31 +145,51 @@ extension HomeVIPController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let footView: HomeVipFooterView = tableView.dequeueReusableHeaderFooterView(withIdentifier: HomeVipFooterViewID) as! HomeVipFooterView
-//        return footView
         let view = UIView()
         view.backgroundColor = FooterViewColor
         return view
     }
+}
+extension HomeVIPController:HomeVipBannerCellDelegate{
+    func homeVipBannerCellClick(url: String) {
+        let warning = MessageView.viewFromNib(layout: .cardView)
+        warning.configureTheme(.warning)
+        warning.configureDropShadow()
+        
+        let iconText = ["🤔", "😳", "🙄", "😶"].sm_random()!
+        warning.configureContent(title: "Warning", body: "哎呀呀!咋没反应呢???", iconText: iconText)
+        warning.button?.isHidden = true
+        var warningConfig = SwiftMessages.defaultConfig
+        warningConfig.presentationContext = .window(windowLevel: UIWindowLevelStatusBar)
+        SwiftMessages.show(config: warningConfig, view: warning)
+    }
+}
 
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == self.tableView {
-            let dic = NSMutableDictionary.init()
-            let cellArray: NSArray = self.tableView.visibleCells as NSArray
-            var cellSectionMinCount : Int64 = Int64(LONG_MAX)
-            if cellArray.count >= 4 {
-                for index in 4..<cellArray.count {
-                    let cell:HomeVIPCell = cellArray[index] as! HomeVIPCell
-                    let cellSection: Int64 = Int64((self.tableView .indexPath(for: cell)?.section)!)
-                    dic .setValue(cellSection, forKey: "\(cellSection)")
-                    if cellSection < cellSectionMinCount {
-                        cellSectionMinCount = cellSection
-                    }
-                }
-                self.currentTopSectionCount = cellSectionMinCount
-            }
+// Mark: - 点击顶部分类按钮 delegate
+extension HomeVIPController:HomeVipCategoriesCellDelegate{
+    func homeVipCategoriesCellItemClick(id: String, url: String,title:String) {
+        if url == ""{
+            let vc = ClassifySubMenuController(categoryId: Int(id)!,isVipPush:true)
+            vc.title = title
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            let vc = FMWebViewController(url:url)
+            vc.title = title
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
+}
+// Mark: - 点击Vip尊享课item delegate
+extension HomeVIPController:HomeVipEnjoyCellDelegate{
+    func homeVipEnjoyCellItemClick(model: CategoryContents) {
+        let vc = FMPlayDetailController(albumId: model.albumId)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+// Mark: - 点击热播item delegate
+extension HomeVIPController:HomeVipHotCellDelegate{
+    func homeVipHotCellItemClick(model: CategoryContents) {
+        let vc = FMPlayDetailController(albumId: model.albumId)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

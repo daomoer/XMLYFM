@@ -40,7 +40,6 @@ class ClassifySubRecommendController: UIViewController {
     private let ClassifySubModuleType16CellID = "ClassifySubModuleType16Cell"
     private let ClassifySubModuleType23CellID = "ClassifySubModuleType23Cell"
 
-    
     private lazy var collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
         let collection = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
@@ -61,6 +60,7 @@ class ClassifySubRecommendController: UIViewController {
         collection.register(ClassifySubModuleType4Cell.self, forCellWithReuseIdentifier: ClassifySubModuleType4CellID)
         collection.register(ClassifySubModuleType16Cell.self, forCellWithReuseIdentifier: ClassifySubModuleType16CellID)
         collection.register(ClassifySubModuleType23Cell.self, forCellWithReuseIdentifier: ClassifySubModuleType23CellID)
+        collection.uHead = URefreshHeader{ [weak self] in self?.loadRecommendData() }
 
         return collection
     }()
@@ -73,6 +73,7 @@ class ClassifySubRecommendController: UIViewController {
             make.width.height.equalToSuperview()
             make.center.equalToSuperview()
         }
+        self.collectionView.uHead.beginRefreshing()
         loadRecommendData()
     }
     func loadRecommendData(){
@@ -89,6 +90,7 @@ class ClassifySubRecommendController: UIViewController {
                 if let focusModel = JSONDeserializer<FocusModel>.deserializeFrom(json:json["focusImages"].description) { // 从字符串转换为对象实例
                     self.focus = focusModel
                 }
+                self.collectionView.uHead.endRefreshing()
                 self.collectionView.reloadData()
             }
         }

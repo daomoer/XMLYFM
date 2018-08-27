@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftyJSON
+import HandyJSON
 
 let HomeLiveSectionGrid     = 0   // 分类section
 let HomeLiveSectionBanner   = 1   // 滚动图片section
@@ -15,6 +17,7 @@ let HomeLiveSectionLive     = 3   // 直播section
 
 /// 首页直播控制器
 class HomeLiveController: HomeBaseViewController {
+    var lives:[LivesModel]?
 
     private let HomeLiveHeaderViewID = "HomeLiveHeaderView"
     private let RecommendLiveCellID = "RecommendLiveCell"
@@ -60,7 +63,6 @@ class HomeLiveController: HomeBaseViewController {
     }
     
     func loadLiveData(){
-        
         // 加载数据
         viewModel.updataBlock = { [unowned self] in
             self.collectionView.uHead.endRefreshing()
@@ -86,6 +88,7 @@ extension HomeLiveController: UICollectionViewDelegate, UICollectionViewDataSour
             let cell:HomeLiveGridCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeLiveGridCellID, for: indexPath) as! HomeLiveGridCell
             cell.layer.masksToBounds = true
             cell.layer.cornerRadius = 5
+            cell.delegate = self
             return cell
         case HomeLiveSectionBanner:
             let cell:HomeLiveBannerCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeLiveBannerCellID, for: indexPath) as! HomeLiveBannerCell
@@ -141,12 +144,36 @@ extension HomeLiveController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
             let headerView : HomeLiveHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HomeLiveHeaderViewID, for: indexPath) as! HomeLiveHeaderView
-            
+            headerView.delegate = self
             headerView.backgroundColor = UIColor.white
             return headerView
         }else {
             return UICollectionReusableView()
+            
         }
     }
 }
+
+// Mark: - 点击顶部分类按钮 delegate
+extension HomeLiveController:HomeLiveGridCellDelegate{
+    func homeLiveGridCellItemClick(channelId: Int,title:String) {
+        let vc = LiveCategoryListController(channelId: channelId)
+        vc.title = title
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+// Mark: - 点击中间直播item上分类按钮 delegate
+extension HomeLiveController:HomeLiveHeaderViewDelegate{
+    func homeLiveHeaderViewCategoryBtnClick(button: UIButton) {
+        viewModel.categoryType = button.tag - 988
+        // 加载数据
+        viewModel.updataBlock = { [unowned self] in
+            // 更新列表数据
+            self.collectionView.reloadData()
+        }
+        viewModel.refreshCategoryLiveData()
+    }
+}
+
 

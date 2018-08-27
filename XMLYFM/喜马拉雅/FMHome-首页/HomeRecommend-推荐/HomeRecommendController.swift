@@ -9,9 +9,11 @@
 import UIKit
 import SwiftyJSON
 import HandyJSON
+import SwiftMessages
 
 /// 首页推荐控制器
 class HomeRecommendController: HomeBaseViewController {
+    let otherMessages = SwiftMessages()
     // MARK - 数据模型
     private var recommnedAdvertList:[RecommnedAdvertModel]? // 穿插的广告数据
     //MARK - cell 注册ID
@@ -62,7 +64,7 @@ class HomeRecommendController: HomeBaseViewController {
         }
         self.collectionView.uHead.beginRefreshing()
         loadData()
-//        loadRecommendAdData()
+        loadRecommendAdData()
     }
     
     func loadData(){
@@ -75,20 +77,20 @@ class HomeRecommendController: HomeBaseViewController {
         viewModel.refreshDataSource()
     }
     
-//    func loadRecommendAdData() {
-//        //        //首页穿插广告接口请求
-//        FMRecommendProvider.request(.recommendAdList) { result in
-//        if case let .success(response) = result {
-//        //解析数据
-//            let data = try? response.mapJSON()
-//            let json = JSON(data!)
-//            if let advertList = JSONDeserializer<RecommnedAdvertModel>.deserializeModelArrayFrom(json: json["data"].description) { // 从字符串转换为对象实例
-//                self.recommnedAdvertList = advertList as? [RecommnedAdvertModel]
-//                self.collectionView.reloadData()
-//            }
-//        }
-//      }
-//    }
+    func loadRecommendAdData() {
+        //        //首页穿插广告接口请求
+        FMRecommendProvider.request(.recommendAdList) { result in
+        if case let .success(response) = result {
+        //解析数据
+            let data = try? response.mapJSON()
+            let json = JSON(data!)
+            if let advertList = JSONDeserializer<RecommnedAdvertModel>.deserializeModelArrayFrom(json: json["data"].description) { // 从字符串转换为对象实例
+                self.recommnedAdvertList = advertList as? [RecommnedAdvertModel]
+                self.collectionView.reloadData()
+            }
+        }
+      }
+    }
 }
 
 // MARK - collectionDelegate
@@ -113,11 +115,15 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
                 cell.delegate = self
                 return cell
         }else if moduleType == "guessYouLike" || moduleType == "paidCategory" || moduleType == "categoriesForLong" || moduleType == "cityCategory"{
+            ///横式排列布局cell
                 let cell:FMRecommendGuessLikeCell = collectionView.dequeueReusableCell(withReuseIdentifier: FMRecommendGuessLikeCellID, for: indexPath) as! FMRecommendGuessLikeCell
+                cell.delegate = self
                 cell.recommendListData = viewModel.homeRecommendList?[indexPath.section].list
                 return cell
         }else if moduleType == "categoriesForShort" || moduleType == "playlist" || moduleType == "categoriesForExplore"{
+            // 竖式排列布局cell
                 let cell:FMHotAudiobookCell = collectionView.dequeueReusableCell(withReuseIdentifier: FMHotAudiobookCellID, for: indexPath) as! FMHotAudiobookCell
+            cell.delegate = self
                 cell.recommendListData = viewModel.homeRecommendList?[indexPath.section].list
                 return cell
         }else if moduleType == "ad" {
@@ -148,9 +154,7 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let moduleType = viewModel.homeRecommendList?[indexPath.section].moduleType
-        let vc = FMPlayDetailController()
-        self.navigationController?.pushViewController(vc, animated: true)
+
     }
     
     //每个分区的内边距
@@ -202,7 +206,7 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
                 }else {
                     guard let categoryId = self?.viewModel.homeRecommendList?[indexPath.section].target?.categoryId else {return}
                     if categoryId != 0 {
-                        let vc = ClassifySubMenuController(categoryId:categoryId)
+                        let vc = ClassifySubMenuController(categoryId:categoryId,isVipPush:false)
                         vc.title = self?.viewModel.homeRecommendList?[indexPath.section].title
                         self?.navigationController?.pushViewController(vc, animated: true)
                     }
@@ -219,11 +223,59 @@ extension HomeRecommendController: UICollectionViewDelegateFlowLayout, UICollect
 
 // Mark:- 点击顶部分类按钮进入相对应界面
 extension HomeRecommendController:FMRecommendHeaderCellDelegate {
-    func recommendHeaderBtnClick(categoryId:String){
-        let vc = ClassifySubMenuController(categoryId:Int(categoryId)!)
+    func recommendHeaderBannerClick(url: String) {
+        let status2 = MessageView.viewFromNib(layout: .statusLine)
+        status2.backgroundView.backgroundColor = DominantColor
+        status2.bodyLabel?.textColor = UIColor.white
+        status2.configureContent(body: "哎呀呀!咋没反应呢???")
+        var status2Config = SwiftMessages.defaultConfig
+        status2Config.presentationContext = .window(windowLevel: UIWindowLevelNormal)
+        status2Config.preferredStatusBarStyle = .lightContent
+        SwiftMessages.show(config: status2Config, view: status2)
+    }
+    
+    func recommendHeaderBtnClick(categoryId:String,title:String,url:String){
+        if url == ""{
+            if categoryId == "0"{
+                let warning = MessageView.viewFromNib(layout: .cardView)
+                warning.configureTheme(.warning)
+                warning.configureDropShadow()
+                
+                let iconText = ["🤔", "😳", "🙄", "😶"].sm_random()!
+                warning.configureContent(title: "Warning", body: "别点了,接口变了,暂时没数据啦!!!", iconText: iconText)
+                warning.button?.isHidden = true
+                var warningConfig = SwiftMessages.defaultConfig
+                warningConfig.presentationContext = .window(windowLevel: UIWindowLevelStatusBar)
+                SwiftMessages.show(config: warningConfig, view: warning)
+            }else{
+                let vc = ClassifySubMenuController(categoryId:Int(categoryId)!)
+                vc.title = title
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }else{
+            let vc = FMWebViewController(url:url)
+            vc.title = title
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+}
+// Mark: -点击猜你喜欢cell代理方法
+extension HomeRecommendController:FMRecommendGuessLikeCellDelegate {
+    func recommendGuessLikeCellItemClick(model: RecommendListModel) {
+        let vc = FMPlayDetailController(albumId: model.albumId)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
+
+// Mark: -点击热门有声书等cell代理方法
+extension HomeRecommendController:FMHotAudiobookCellDelegate {
+    func hotAudiobookCellItemClick(model: RecommendListModel) {
+        let vc = FMPlayDetailController(albumId: model.albumId)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
 
 
 

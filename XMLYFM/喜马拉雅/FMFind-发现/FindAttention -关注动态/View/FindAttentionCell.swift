@@ -48,8 +48,8 @@ class FindAttentionCell: UITableViewCell {
         return imageView
     }()
     // 评论
-    lazy var commnetLabel : UILabel = {
-        let label = UILabel()
+    lazy var commnetLabel : YYCustomLabel = {
+        let label = YYCustomLabel()
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.lightGray
         return label

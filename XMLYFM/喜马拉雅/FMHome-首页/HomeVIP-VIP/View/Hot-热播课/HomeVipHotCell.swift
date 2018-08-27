@@ -7,8 +7,14 @@
 //
 
 import UIKit
+/// 添加cell点击代理方法
+protocol HomeVipHotCellDelegate:NSObjectProtocol {
+    func homeVipHotCellItemClick(model:CategoryContents)
+}
 
 class HomeVipHotCell: UITableViewCell {
+    weak var delegate : HomeVipHotCellDelegate?
+
     private var categoryContents:[CategoryContents]?
     
     private let VipHotCellID = "VipHotCell"
@@ -73,6 +79,10 @@ extension HomeVipHotCell: UICollectionViewDelegate, UICollectionViewDataSource, 
         let cell:VipHotCell = collectionView.dequeueReusableCell(withReuseIdentifier: VipHotCellID, for: indexPath) as! VipHotCell
         cell.categoryContentsModel = self.categoryContents?[indexPath.row]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.homeVipHotCellItemClick(model: (self.categoryContents?[indexPath.row])!)
     }
     
     //每个分区的内边距

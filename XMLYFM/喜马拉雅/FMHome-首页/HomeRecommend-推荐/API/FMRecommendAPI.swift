@@ -18,6 +18,11 @@ enum FMRecommendAPI {
     case recommendForYouList // 为你推荐
     case recommendAdList // 推荐页面穿插的广告
     case guessYouLikeMoreList // 猜你喜欢更多
+    
+    case changeGuessYouLikeList // 更换猜你喜欢
+    case changePaidCategoryList //更换精品
+    case changeLiveList // 更换直播
+    case changeOtherCategory(categoryId:Int)// 更换其他
 }
 
 extension FMRecommendAPI: TargetType {
@@ -37,6 +42,10 @@ extension FMRecommendAPI: TargetType {
         case .recommendForYouList: return "/mobile/discovery/v4/recommend/albums"
         case .recommendAdList: return "/ting/feed/ts-1532656780625"
         case .guessYouLikeMoreList: return "/discovery-firstpage/guessYouLike/list/ts-1534815616591"
+        case .changeGuessYouLikeList: return "/discovery-firstpage/guessYouLike/cycle/ts-1535167862593"
+        case .changePaidCategoryList: return "/mobile/discovery/v1/guessYouLike/paidCategory/ts-1535167980873"
+        case .changeLiveList: return "/lamia/v1/hotpage/exchange"
+        case .changeOtherCategory: return "/mobile/discovery/v4/albums/ts-1535168024113"
         }
     }
 
@@ -105,9 +114,73 @@ extension FMRecommendAPI: TargetType {
                 "version":"6.5.3",
                 "xt": Int32(Date().timeIntervalSince1970),
                 "deviceId": UIDevice.current.identifierForVendor!.uuidString]
+            
+        case .changeGuessYouLikeList:
+            parmeters = [
+                "device":"iPhone",
+                "appid":0,
+                "excludedAdAlbumIds":"8258116%2C8601255%2C16514340",
+                "excludedAlbumIds":"4169245%2C4156778%2C4078652%2C8601255%2C4177638%2C16514340%2C5993267%2C12201334%2C13089888%2C4310827%2C4792267%2C2912127%2C13403391%2C4193171%2C5411224%2C8258116%2C4323493%2C10829913",
+                "excludedRoomIds":"",
+                "excludedSpecialIds":"",
+                
+                "excludedOffset":18,
+                "inreview":false,
+                "loopIndex":3,
+                "network":"WIFI",
+                "operator":3,
+                "pageId":1,
+                "pageSize":6,
+                "scale":3,
+                "uid":0,
+                "version":"6.5.3",
+                "xt": Int32(Date().timeIntervalSince1970),
+                "deviceId": UIDevice.current.identifierForVendor!.uuidString]
+            
+        case .changePaidCategoryList:
+        parmeters = [
+            "device":"iPhone",
+            "appid":0,
+            "excludedAdAlbumIds":13616258,
+            "excludedOffset":18,
+            "network":"WIFI",
+            "operator":3,
+            "pageId":1,
+            "pageSize":3,
+            "scale":3,
+            "uid":0,
+            "version":"6.5.3",
+            "xt": Int32(Date().timeIntervalSince1970),
+            "deviceId": UIDevice.current.identifierForVendor!.uuidString]
+
+            
+        case .changeLiveList:
+            parmeters = [
+                "currentRecordIds":"1655918%2C1671613%2C1673030%2C1670774%2C1673082%2C1672407",
+                "pageId":1,
+                "pageSize":6,
+                "device":"iPhone"
+            ]
+            
+        case .changeOtherCategory(let categoryId):
+            parmeters = [
+                "appid":0,
+                "excludedAlbumIds":"7024810%2C8424399%2C8125936",
+                "excludedAdAlbumIds":"13616258",
+                "excludedOffset":3,
+                "network":"WIFI",
+                "operator":3,
+                "pageId":1,
+                "pageSize":3,
+                "scale":3,
+                "uid":0,
+                "version":"6.5.3",
+                "xt": Int32(Date().timeIntervalSince1970),
+                "deviceId": UIDevice.current.identifierForVendor!.uuidString
+            ]
+            parmeters["categoryId"] = categoryId
         }
-
-
+        
 
         return .requestParameters(parameters: parmeters, encoding: URLEncoding.default)
     }

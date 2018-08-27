@@ -7,8 +7,14 @@
 //
 
 import UIKit
+/// 添加cell点击代理方法
+protocol HomeLiveGridCellDelegate:NSObjectProtocol {
+    func homeLiveGridCellItemClick(channelId:Int,title:String)
+}
 
 class HomeLiveGridCell: UICollectionViewCell {
+    weak var delegate : HomeLiveGridCellDelegate?
+
     private let LiveHeaderGridCellID = "LiveHeaderGridCell"
     let imageArray = [
         "http://fdfs.xmcdn.com/group45/M08/74/91/wKgKlFtVs-iBg01bAAAmze4KwRQ177.png",
@@ -57,5 +63,9 @@ extension HomeLiveGridCell: UICollectionViewDataSource, UICollectionViewDelegate
         cell.imageUrl = self.imageArray[indexPath.row]
         cell.titleString = self.titleArray[indexPath.row]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.homeLiveGridCellItemClick(channelId: indexPath.row+5,title:self.titleArray[indexPath.row])
     }
 }

@@ -83,6 +83,7 @@ extension HomeBroadcastController: UICollectionViewDelegate, UICollectionViewDat
         case HomeBroadcastSectionTel: // 顶部电台
             let cell:RadioSquareResultsCell = collectionView.dequeueReusableCell(withReuseIdentifier: RadioSquareResultsCellID, for: indexPath) as! RadioSquareResultsCell
             cell.radioSquareResultsModel = viewModel.radioSquareResults
+            cell.delegate = self
             return cell
         case HomeBroadcastSectionMoreTel: // 可展开更多的电台
             let identifier:String = "\(indexPath.section)\(indexPath.row)"
@@ -108,7 +109,11 @@ extension HomeBroadcastController: UICollectionViewDelegate, UICollectionViewDat
         if indexPath.section == 1 {
             if indexPath.row == 7 {
                 if viewModel.isUnfold {
-                    
+                    let categoryId:Int = (viewModel.categories?[indexPath.row].id)!
+                    let title = viewModel.categories?[indexPath.row].name
+                    let vc = BroadcastListController(url: nil, categoryId: categoryId,isMoreCategory:true)
+                    vc.title = title
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }else {
                     viewModel.isUnfold = true
                     viewModel.categories?.remove(at: 7)
@@ -124,8 +129,16 @@ extension HomeBroadcastController: UICollectionViewDelegate, UICollectionViewDat
                 }else {
                     
                 }
+            }else{
+                let categoryId:Int = (viewModel.categories?[indexPath.row].id)!
+                let title = viewModel.categories?[indexPath.row].name
+                let vc = BroadcastListController(url: nil, categoryId: categoryId,isMoreCategory:true)
+                vc.title = title
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }
+        
+        
     }
     
     //每个分区的内边距
@@ -167,6 +180,25 @@ extension HomeBroadcastController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return viewModel.referenceSizeForFooterInSection(section: section)
+    }
+}
+//Mark:- 点击最上层电台分类 Delegate
+extension HomeBroadcastController:RadioSquareResultsCellDelegate {
+    func radioSquareResultsCellItemClick(url: String,title:String) {
+        if title == "主播直播" {
+            let vc = HomeLiveController()
+            vc.title = title
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else if title == "省市台"{
+            
+        }else {
+            // 截取参数
+            var split = url.components(separatedBy: ".com")
+            let string = split[1]
+            let vc = BroadcastListController(url: string, categoryId: 0,isMoreCategory:false)
+            vc.title = title
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
