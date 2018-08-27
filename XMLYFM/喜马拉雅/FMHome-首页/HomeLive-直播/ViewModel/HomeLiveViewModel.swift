@@ -11,6 +11,13 @@ import SwiftyJSON
 import HandyJSON
 
 class HomeLiveViewModel: NSObject {
+    // 外部传值请求接口如此那
+    var categoryType :Int = 0
+    convenience init(categoryType: Int = 0) {
+        self.init()
+        self.categoryType = categoryType
+    }
+    
     var homeLiveData: HomeLiveDataModel?
     var lives:[LivesModel]?
     var categoryVoList:[CategoryVoList]?
@@ -91,6 +98,27 @@ extension HomeLiveViewModel {
         }
     }
 }
+
+// Mark:-点击分类刷新主页数据请求数据
+extension HomeLiveViewModel {
+    func refreshCategoryLiveData() {
+        loadCategoryLiveData()
+    }
+    func loadCategoryLiveData(){
+        HomeLiveProvider.request(.categoryTypeList(categoryType:self.categoryType)) { result in
+            if case let .success(response) = result {
+                //解析数据
+                let data = try? response.mapJSON()
+                let json = JSON(data!)
+                if let mappedObject = JSONDeserializer<LivesModel>.deserializeModelArrayFrom(json: json["data"]["lives"].description) {
+                    self.lives = mappedObject as? [LivesModel]
+                }
+                self.updataBlock?()
+            }
+        }
+    }
+}
+
 
 // Mark:-collectionview数据
 extension HomeLiveViewModel {

@@ -10,13 +10,14 @@ import UIKit
 
 class FMOneKeyListenCell: UICollectionViewCell {
     private var oneKeyListen:[OneKeyListenModel]?
-    private var changeBtn:UIButton = {
+    private lazy var changeBtn:UIButton = {
         let button = UIButton.init(type: UIButtonType.custom)
         button.setTitle("换一批", for: UIControlState.normal)
         button.setTitleColor(DominantColor, for: UIControlState.normal)
         button.backgroundColor = UIColor.init(red: 254/255.0, green: 232/255.0, blue: 227/255.0, alpha: 1)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 5.0
+        button.addTarget(self, action: #selector(updataBtnClick(button:)), for: UIControlEvents.touchUpInside)
         return button
     }()
     // MARK: - 懒加载九宫格分类按钮
@@ -55,6 +56,10 @@ class FMOneKeyListenCell: UICollectionViewCell {
             make.height.equalTo(30)
             make.centerX.equalToSuperview()
         }
+    }
+    // 更换一批按钮刷新cell
+    @objc func updataBtnClick(button:UIButton){
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
