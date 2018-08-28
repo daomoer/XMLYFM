@@ -34,7 +34,7 @@ class FMPlayViewModel: NSObject {
 // Mark:-请求数据
 extension FMPlayViewModel {
     func refreshDataSource() {
-        FMPlayProvider.request(FMPlayAPI.fmPlayData(albumId:self.albumId,trackUid:self.trackUid,uid:self.uid)) { result in
+ FMPlayProvider.request(FMPlayAPI.fmPlayData(albumId:self.albumId,trackUid:self.trackUid,uid:self.uid)) { result in
             if case let .success(response) = result {
                 //解析数据
                 let data = try? response.mapJSON()

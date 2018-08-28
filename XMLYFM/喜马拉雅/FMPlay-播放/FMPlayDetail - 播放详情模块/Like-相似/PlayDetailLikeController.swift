@@ -15,8 +15,9 @@ class PlayDetailLikeController: UIViewController , LTTableViewProtocal{
     private var albumResults:[ClassifyVerticalModel]?
     private let PlayDetailLikeCellID = "PlayDetailLikeCell"
     private lazy var tableView: UITableView = {
-        let tableView = tableViewConfig(CGRect(x: 0, y: 0, width:YYScreenWidth, height: YYScreenHeigth-64), self, self, nil)
+        let tableView = tableViewConfig(CGRect(x: 0, y: 0, width:YYScreenWidth, height: YYScreenHeigth), self, self, nil)
         tableView.register(PlayDetailLikeCell.self, forCellReuseIdentifier: PlayDetailLikeCellID)
+        tableView.uHead = URefreshHeader{ [weak self] in self?.loadData() }
         return tableView
     }()
     
@@ -30,6 +31,8 @@ class PlayDetailLikeController: UIViewController , LTTableViewProtocal{
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
+        //刚进页面进行刷新
+        self.tableView.uHead.beginRefreshing()
         loadData()
     }
     func loadData(){
@@ -40,6 +43,7 @@ class PlayDetailLikeController: UIViewController , LTTableViewProtocal{
                 let json = JSON(data!)
                 if let mappedObject = JSONDeserializer<ClassifyVerticalModel>.deserializeModelArrayFrom(json: json["albums"].description) {
                     self.albumResults = mappedObject as? [ClassifyVerticalModel]
+                    self.tableView.uHead.endRefreshing()
                     self.tableView.reloadData()
                 }
             }
@@ -61,6 +65,12 @@ extension PlayDetailLikeController : UITableViewDelegate, UITableViewDataSource 
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.classifyVerticalModel = self.albumResults?[indexPath.row]
             return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let albumId = self.albumResults?[indexPath.row].albumId ?? 0
+        let vc = FMPlayDetailController(albumId: albumId)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

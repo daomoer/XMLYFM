@@ -52,15 +52,50 @@ class FMPlayController: UIViewController {
         return FMPlayViewModel(albumId:self.albumId,trackUid:self.trackUid, uid:self.uid)
     }()
     
+    //Mark: - 导航栏左边按钮
+    private lazy var leftBarButton:UIButton = {
+        let button = UIButton.init(type: UIButtonType.custom)
+        button.frame = CGRect(x:0, y:0, width:30, height: 30)
+        button.setImage(UIImage(named: "playpage_icon_down_black_30x30_"), for: UIControlState.normal)
+        button.addTarget(self, action: #selector(leftBarButtonClick), for: UIControlEvents.touchUpInside)
+        return button
+    }()
+    
+    //Mark: - 导航栏右边按钮
+    private lazy var rightBarButton1:UIButton = {
+        let button = UIButton.init(type: UIButtonType.custom)
+        button.frame = CGRect(x:0, y:0, width:30, height: 30)
+        button.setImage(UIImage(named: "playpage_icon_more_black_30x30_"), for: UIControlState.normal)
+        button.addTarget(self, action: #selector(rightBarButtonClick1), for: UIControlEvents.touchUpInside)
+        return button
+    }()
+    
+    //Mark: - 导航栏右边按钮
+    private lazy var rightBarButton2:UIButton = {
+        let button = UIButton.init(type: UIButtonType.custom)
+        button.frame = CGRect(x:0, y:0, width:30, height: 30)
+        button.setImage(UIImage(named: "playpage_icon_share_black_30x30_"), for: UIControlState.normal)
+        button.addTarget(self, action: #selector(rightBarButtonClick2), for: UIControlEvents.touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
+        // 设置导航栏颜色
+        navBarBarTintColor = UIColor.white
+        navBarBackgroundAlpha = 0
         self.view.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { (make) in
             make.width.height.equalToSuperview()
             make.center.equalToSuperview()
         }
         loadData()
+        
+        let rightBarButtonItem1:UIBarButtonItem = UIBarButtonItem.init(customView: rightBarButton1)
+        let rightBarButtonItem2:UIBarButtonItem = UIBarButtonItem.init(customView: rightBarButton2)
+        self.navigationItem.rightBarButtonItems = [rightBarButtonItem1, rightBarButtonItem2]
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: leftBarButton)
     }
     
     func loadData(){
@@ -77,13 +112,27 @@ class FMPlayController: UIViewController {
         let offsetY = scrollView.contentOffset.y
         if (offsetY > 0)
         {
-            let alpha = offsetY / CGFloat(kNavBarBottom)
-            navBarBackgroundAlpha = alpha
-            print("lala")
+//            let alpha = offsetY / CGFloat(kNavBarBottom)
+            navBarBackgroundAlpha = 1
+//            print("lala")
         }else{
             navBarBackgroundAlpha = 0
-            print("zhege")
+//            print("zhege")
         }
+    }
+    //Mark: - 导航栏左边消息点击事件
+    @objc func leftBarButtonClick() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    //Mark: - 导航栏右边消息点击事件
+    @objc func rightBarButtonClick1() {
+        
+    }
+    
+    //Mark: - 导航栏右边消息点击事件
+    @objc func rightBarButtonClick2() {
+        
     }
 }
 
@@ -118,8 +167,9 @@ extension FMPlayController : UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = YYNavigationController.init(rootViewController: FMPlayDetailController())
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = YYNavigationController.init(rootViewController: FMPlayDetailController())
+//        self.navigationController?.pushViewController(vc, animated: true)
+//        self.dismiss(animated: true, completion: nil)
     }
     
     //每个分区的内边距

@@ -13,19 +13,9 @@ class PlayDetailProgramController: UIViewController, LTTableViewProtocal{
     private var playDetailTracks:FMPlayDetailTracksModel?
 
     private let PlayDetailProgramCellID        = "PlayDetailProgramCell"
-//    private let PlayDetailProgramHeaderViewID  = "PlayDetailProgramHeaderView"
-//    private lazy var headerView:PlayDetailProgramHeaderView = {
-//        let view = PlayDetailProgramHeaderView.init(frame: CGRect(x:0, y:0, width:YYScreenWidth, height:40))
-//        view.backgroundColor = UIColor.red
-//        return view
-//    }()
-    
     private lazy var tableView: UITableView = {
-        let tableView = tableViewConfig(CGRect(x: 0, y:0, width:YYScreenWidth, height: YYScreenHeigth-64), self, self, nil)
-//        tableView.backgroundColor = UIColor.gray
+        let tableView = tableViewConfig(CGRect(x: 0, y:0, width:YYScreenWidth, height: YYScreenHeigth), self, self, nil)
         tableView.register(PlayDetailProgramCell.self, forCellReuseIdentifier: PlayDetailProgramCellID)
-//        tableView.register(PlayDetailProgramHeaderView.self, forCellReuseIdentifier: PlayDetailProgramHeaderViewID)
-//        tableView.tableHeaderView = self.headerView
         return tableView
     }()
     
@@ -71,20 +61,11 @@ extension PlayDetailProgramController : UITableViewDelegate, UITableViewDataSour
         let albumId = self.playDetailTracks?.list?[indexPath.row].albumId ?? 0
         let trackUid = self.playDetailTracks?.list?[indexPath.row].trackId ?? 0
         let uid = self.playDetailTracks?.list?[indexPath.row].uid ?? 0
-        let vc = FMPlayController(albumId:albumId, trackUid:trackUid, uid:uid)
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = YYNavigationController.init(rootViewController: FMPlayController(albumId:albumId, trackUid:trackUid, uid:uid))
+//        let vc = FMPlayController(albumId:albumId, trackUid:trackUid, uid:uid)
+//        self.navigationController?.pushViewController(vc, animated: true)
+        self.present(vc, animated: true, completion: nil)
     }
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 40
-//    }
-
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-////        let headView:PlayDetailProgramHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: PlayDetailProgramHeaderViewID) as! PlayDetailProgramHeaderView
-////        return headView
-//        let headerView = PlayDetailProgramHeaderView()
-//        headerView.backgroundColor = UIColor.red
-//        return headerView
-//    }
 }
 
 

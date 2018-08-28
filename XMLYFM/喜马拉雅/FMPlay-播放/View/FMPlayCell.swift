@@ -131,7 +131,6 @@ class FMPlayCell: UICollectionViewCell {
         }
         // 图片
         self.addSubview(self.imageView)
-        self.imageView.backgroundColor = UIColor.purple
         self.imageView.snp.makeConstraints { (make) in
             make.top.equalTo(self.titleLabel.snp.bottom).offset(15)
             make.left.equalToSuperview().offset(60)

@@ -36,13 +36,7 @@ class PlayAnchorIntroCell: UITableViewCell {
     // 加关注
     private lazy var attentionBtn:UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "关注"), for: UIControlState.normal)
-        button.setTitle("加关注", for: UIControlState.normal)
-        button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 10)
-        button.setTitleColor(UIColor.init(r: 213, g: 54, b: 13), for: UIControlState.normal)
-        button.titleEdgeInsets = UIEdgeInsetsMake(30, -10, 0, 10)
-        button.imageEdgeInsets = UIEdgeInsetsMake(-10, 0, 0, -30)
+        button.setImage(UIImage(named: "np_headview_nofollow_n_23x36_"), for: UIControlState.normal)
         return button
     }()
 
@@ -80,8 +74,8 @@ class PlayAnchorIntroCell: UITableViewCell {
         self.addSubview(self.attentionBtn)
         self.attentionBtn.snp.makeConstraints { (make) in
             make.right.equalToSuperview().offset(-10)
-            make.height.equalTo(40)
-            make.width.equalTo(30)
+            make.height.equalTo(36)
+            make.width.equalTo(23)
             make.top.equalTo(self.iconView)
         }
     }

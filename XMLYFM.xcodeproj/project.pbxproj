@@ -38,6 +38,7 @@
 		CF2ADBBF212FCB7F0077C544 /* FMPlayCircleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2ADBBE212FCB7F0077C544 /* FMPlayCircleCell.swift */; };
 		CF2ADBC1212FCB9F0077C544 /* FMPlayAnchorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2ADBC0212FCB9F0077C544 /* FMPlayAnchorCell.swift */; };
 		CF2ADBC3212FE3F00077C544 /* FMPlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2ADBC2212FE3F00077C544 /* FMPlayViewModel.swift */; };
+		CF2B68CF2134FD590009DFD1 /* ClassifySubRecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2B68CE2134FD590009DFD1 /* ClassifySubRecommendViewModel.swift */; };
 		CF3D4D45212BA7F50072C21F /* HomeGuessYouLikeMoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D4D44212BA7F50072C21F /* HomeGuessYouLikeMoreController.swift */; };
 		CF3D4D48212BB4F90072C21F /* FMPlayDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D4D47212BB4F90072C21F /* FMPlayDetailController.swift */; };
 		CF3D4D4E212BB59C0072C21F /* FMPlayDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D4D4D212BB59C0072C21F /* FMPlayDetailHeaderView.swift */; };
@@ -248,6 +249,7 @@
 		CF2ADBBE212FCB7F0077C544 /* FMPlayCircleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPlayCircleCell.swift; sourceTree = "<group>"; };
 		CF2ADBC0212FCB9F0077C544 /* FMPlayAnchorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPlayAnchorCell.swift; sourceTree = "<group>"; };
 		CF2ADBC2212FE3F00077C544 /* FMPlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPlayViewModel.swift; sourceTree = "<group>"; };
+		CF2B68CE2134FD590009DFD1 /* ClassifySubRecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubRecommendViewModel.swift; sourceTree = "<group>"; };
 		CF3D4D44212BA7F50072C21F /* HomeGuessYouLikeMoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGuessYouLikeMoreController.swift; sourceTree = "<group>"; };
 		CF3D4D47212BB4F90072C21F /* FMPlayDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPlayDetailController.swift; sourceTree = "<group>"; };
 		CF3D4D4D212BB59C0072C21F /* FMPlayDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMPlayDetailHeaderView.swift; sourceTree = "<group>"; };
@@ -1131,6 +1133,7 @@
 		CFB62D0021265F8900F72FB7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CF2B68CE2134FD590009DFD1 /* ClassifySubRecommendViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1850,6 +1853,7 @@
 				CF5EB94021250DF300BB6962 /* FMMineMakeCell.swift in Sources */,
 				CFFE6CA2211016AA00974A8A /* HomeClassifyCell.swift in Sources */,
 				CF3D4D5A212BE6F50072C21F /* FMPlayDetailModel.swift in Sources */,
+				CF2B68CF2134FD590009DFD1 /* ClassifySubRecommendViewModel.swift in Sources */,
 				CFFE6CAA211016AA00974A8A /* FMRecommendGuessLikeCell.swift in Sources */,
 				CF2640CE210EB6E700BBB398 /* WRProxy.swift in Sources */,
 				CF40DCEF21185D38002999A5 /* FindAttentionViewModel.swift in Sources */,

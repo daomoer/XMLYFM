@@ -45,7 +45,7 @@ class ClassifySubContentController: UIViewController {
         super.viewDidLoad()
         self.view.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(15)
+            make.left.equalToSuperview()
             make.right.top.bottom.equalToSuperview()
         }
         self.collectionView.uHead.beginRefreshing()
@@ -82,7 +82,9 @@ extension ClassifySubContentController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
+        let albumId = self.classifyVerticallist?[indexPath.row].albumId ?? 0
+        let vc = FMPlayDetailController(albumId:albumId)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

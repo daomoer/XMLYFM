@@ -56,7 +56,7 @@ class FMPlayDetailController: UIViewController {
 
     private lazy var advancedManager: LTAdvancedManager = {
         let statusBarH = UIApplication.shared.statusBarFrame.size.height
-        let advancedManager = LTAdvancedManager(frame: CGRect(x: 0, y: 64, width: YYScreenWidth, height: YYScreenHeigth-64), viewControllers: viewControllers, titles: titles, currentViewController: self, layout: layout, headerViewHandle: {[weak self] in
+        let advancedManager = LTAdvancedManager(frame: CGRect(x: 0, y: 0, width: YYScreenWidth, height: YYScreenHeigth+navigationBarHeight), viewControllers: viewControllers, titles: titles, currentViewController: self, layout: layout, headerViewHandle: {[weak self] in
             guard let strongSelf = self else { return UIView() }
             let headerView = strongSelf.headerView
             return headerView
@@ -64,35 +64,63 @@ class FMPlayDetailController: UIViewController {
         /* 设置代理 监听滚动 */
         advancedManager.delegate = self
         /* 设置悬停位置 */
-        advancedManager.hoverY = 0
+        advancedManager.hoverY = navigationBarHeight
         /* 点击切换滚动过程动画 */
         //        advancedManager.isClickScrollAnimation = true
         /* 代码设置滚动到第几个位置 */
         //        advancedManager.scrollToIndex(index: viewControllers.count - 1)
         return advancedManager
     }()
+    
+    //Mark: - 导航栏右边按钮
+    private lazy var rightBarButton1:UIButton = {
+        let button = UIButton.init(type: UIButtonType.custom)
+        button.frame = CGRect(x:0, y:0, width:30, height: 30)
+        button.setImage(UIImage(named: "icon_more_h_30x31_"), for: UIControlState.normal)
+        button.addTarget(self, action: #selector(rightBarButtonClick1), for: UIControlEvents.touchUpInside)
+        return button
+    }()
+    
+    //Mark: - 导航栏右边按钮
+    private lazy var rightBarButton2:UIButton = {
+        let button = UIButton.init(type: UIButtonType.custom)
+        button.frame = CGRect(x:0, y:0, width:30, height: 30)
+        button.setImage(UIImage(named: "icon_share_h_30x30_"), for: UIControlState.normal)
+        button.addTarget(self, action: #selector(rightBarButtonClick2), for: UIControlEvents.touchUpInside)
+        return button
+    }()
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navBarBackgroundAlpha = 0
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navBarBackgroundAlpha = 0
         self.view.backgroundColor = UIColor.white
-//        self.automaticallyAdjustsScrollViewInsets = false
+        self.automaticallyAdjustsScrollViewInsets = false
         view.addSubview(advancedManager)
         advancedManagerConfig()
-//        self.navBarBackgroundAlpha = 0
+        
+        let rightBarButtonItem1:UIBarButtonItem = UIBarButtonItem.init(customView: rightBarButton1)
+        let rightBarButtonItem2:UIBarButtonItem = UIBarButtonItem.init(customView: rightBarButton2)
+
+        self.navigationItem.rightBarButtonItems = [rightBarButtonItem1, rightBarButtonItem2]
 //        for vc in viewControllers{
 //            self.addChildViewController(vc)
 //        }
         loadData()
     }
+    
     func loadData(){
         FMPlayDetailProvider.request(FMPlayDetailAPI.playDetailData(albumId:self.albumId)) { result in
             if case let .success(response) = result {
                 //解析数据
                 let data = try? response.mapJSON()
                 let json = JSON(data!)
-//                if let playDetailModel = JSONDeserializer<FMPlayDetailModel>.deserializeFrom(json: json["data"].description) { // 从字符串转换为对象实例
-//                    self.playDetailModel = playDetailModel
-//                }
                 if let playDetailAlbum = JSONDeserializer<FMPlayDetailAlbumModel>.deserializeFrom(json: json["data"]["album"].description) { // 从字符串转换为对象实例
                     self.playDetailAlbum = playDetailAlbum
                 }
@@ -112,6 +140,16 @@ class FMPlayDetailController: UIViewController {
             }
         }
     }
+    
+    //Mark: - 导航栏左边消息点击事件
+    @objc func rightBarButtonClick1() {
+        
+    }
+    
+    //Mark: - 导航栏左边消息点击事件
+    @objc func rightBarButtonClick2() {
+        
+    }
 
     deinit {
         print("FMFindController < --> deinit")
@@ -128,7 +166,17 @@ extension FMPlayDetailController : LTAdvancedScrollViewDelegate {
     }
     
     func glt_scrollViewOffsetY(_ offsetY: CGFloat) {
-        //        print("offset --> ", offsetY)
+        if (offsetY > 5)
+        {
+            let alpha = offsetY / CGFloat(kNavBarBottom)
+            navBarBackgroundAlpha = alpha
+            self.rightBarButton1.setImage(UIImage(named: "icon_more_n_30x31_"), for: UIControlState.normal)
+            self.rightBarButton2.setImage(UIImage(named: "icon_share_n_30x30_"), for: UIControlState.normal)
+        }else{
+            navBarBackgroundAlpha = 0
+            self.rightBarButton1.setImage(UIImage(named: "icon_more_h_30x31_"), for: UIControlState.normal)
+            self.rightBarButton2.setImage(UIImage(named: "icon_share_h_30x30_"), for: UIControlState.normal)
+        }
     }
 }
 

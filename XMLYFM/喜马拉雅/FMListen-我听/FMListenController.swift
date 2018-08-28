@@ -42,7 +42,7 @@ class FMListenController: UIViewController {
     
     private lazy var advancedManager: LTAdvancedManager = {
         let statusBarH = UIApplication.shared.statusBarFrame.size.height
-        let advancedManager = LTAdvancedManager(frame: CGRect(x: 0, y: 64, width: YYScreenWidth, height: YYScreenHeigth-64), viewControllers: viewControllers, titles: titles, currentViewController: self, layout: layout, headerViewHandle: {[weak self] in
+        let advancedManager = LTAdvancedManager(frame: CGRect(x: 0, y: navigationBarHeight, width: YYScreenWidth, height: YYScreenHeigth-navigationBarHeight), viewControllers: viewControllers, titles: titles, currentViewController: self, layout: layout, headerViewHandle: {[weak self] in
             guard let strongSelf = self else { return UIView() }
             let headerView = strongSelf.headerView
             return headerView
@@ -50,7 +50,7 @@ class FMListenController: UIViewController {
         /* 设置代理 监听滚动 */
         advancedManager.delegate = self
         /* 设置悬停位置 */
-        advancedManager.hoverY = -64
+//        advancedManager.hoverY = -navigationBarHeight
         /* 点击切换滚动过程动画 */
         //        advancedManager.isClickScrollAnimation = true
         /* 代码设置滚动到第几个位置 */

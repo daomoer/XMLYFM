@@ -37,13 +37,13 @@ class ClassifySubModuleType20Cell: UICollectionViewCell {
     // MARK: - 懒加载collectionView
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout.init()
-        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        layout.itemSize = CGSize(width:YYScreenWidth/3, height:180)
+        layout.sectionInset = UIEdgeInsetsMake(5, 15, 5, 15)
+        layout.minimumInteritemSpacing = 5
+        layout.minimumLineSpacing = 5
+        layout.itemSize = CGSize(width:(YYScreenWidth-40)/3, height:180)
         layout.scrollDirection = UICollectionViewScrollDirection.horizontal
         let collectionView = UICollectionView.init(frame:.zero, collectionViewLayout: layout)
-        collectionView.contentSize = CGSize.init(width: YYScreenWidth, height: 180)
+        collectionView.contentSize = CGSize.init(width: YYScreenWidth-40, height: 180)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = UIColor.white
@@ -59,7 +59,9 @@ class ClassifySubModuleType20Cell: UICollectionViewCell {
         self.backgroundColor = UIColor.white
         self.addSubview(self.imageView)
         self.imageView.snp.makeConstraints { (make) in
-            make.left.right.top.equalToSuperview()
+            make.top.equalToSuperview()
+            make.left.equalToSuperview().offset(15)
+            make.right.equalToSuperview().offset(-15)
             make.height.equalTo(100)
         }
         
@@ -80,7 +82,7 @@ class ClassifySubModuleType20Cell: UICollectionViewCell {
         
         self.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { (make) in
-            make.left.right.width.bottom.equalToSuperview()
+            make.left.right.bottom.equalToSuperview()
             make.top.equalTo(self.imageView.snp.bottom).offset(15)
         }
     }

@@ -16,7 +16,7 @@ class PlayDetailIntroController: UIViewController, LTTableViewProtocal{
     private let PlayContentIntroCellID = "PlayContentIntroCell"
     private let PlayAnchorIntroCellID  = "PlayAnchorIntroCell"
     private lazy var tableView: UITableView = {
-        let tableView = tableViewConfig(CGRect(x: 0, y: 0, width:YYScreenWidth, height: YYScreenHeigth-56-64), self, self, nil)
+        let tableView = tableViewConfig(CGRect(x: 0, y: 0, width:YYScreenWidth, height: YYScreenHeigth), self, self, nil)
         tableView.register(PlayContentIntroCell.self, forCellReuseIdentifier: PlayContentIntroCellID)
         tableView.register(PlayAnchorIntroCell.self, forCellReuseIdentifier: PlayAnchorIntroCellID)
         return tableView

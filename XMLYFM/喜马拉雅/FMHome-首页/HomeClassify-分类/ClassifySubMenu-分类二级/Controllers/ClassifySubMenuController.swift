@@ -81,7 +81,7 @@ class ClassifySubMenuController: UIViewController {
         for vc in viewControllers{
             self.addChildViewController(vc)
         }
-        let pageView = DNSPageView(frame: CGRect(x: 0, y: 64, width: YYScreenWidth, height: YYScreenHeigth-64), style: style, titles: nameArray as! [String], childViewControllers: viewControllers)
+        let pageView = DNSPageView(frame: CGRect(x: 0, y: navigationBarHeight, width: YYScreenWidth, height: YYScreenHeigth-navigationBarHeight), style: style, titles: nameArray as! [String], childViewControllers: viewControllers)
         view.addSubview(pageView)
     }
 }
