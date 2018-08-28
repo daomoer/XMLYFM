@@ -66,8 +66,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             [weak tabBarController] tabbarController, viewController, index in
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                let vc = FMPlayController()
-                tabBarController?.present(vc, animated: true, completion: nil)
+//                let vc = FMPlayController()
+//                tabBarController?.present(vc, animated: true, completion: nil)
             }
         }
         
