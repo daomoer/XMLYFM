@@ -80,6 +80,7 @@
 		CF61039E21131BB600CF9B04 /* HomeVipFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61039D21131BB600CF9B04 /* HomeVipFooterView.swift */; };
 		CF6103A021131CB600CF9B04 /* HomeVipBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61039F21131CB600CF9B04 /* HomeVipBannerCell.swift */; };
 		CF6103A221131CCB00CF9B04 /* HomeVipCategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6103A121131CCB00CF9B04 /* HomeVipCategoriesCell.swift */; };
+		CF62598A2137E29B00F9B072 /* gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF6259892137E29B00F9B072 /* gif.gif */; };
 		CF642D272123BCBA00BAE77F /* OneKeyListenLTCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF642D262123BCBA00BAE77F /* OneKeyListenLTCell.swift */; };
 		CF642D292124045900BAE77F /* VipAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF642D282124045900BAE77F /* VipAnimationView.swift */; };
 		CF642D2B21240F2200BAE77F /* FMMineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF642D2A21240F2200BAE77F /* FMMineHeaderView.swift */; };
@@ -291,6 +292,7 @@
 		CF61039D21131BB600CF9B04 /* HomeVipFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVipFooterView.swift; sourceTree = "<group>"; };
 		CF61039F21131CB600CF9B04 /* HomeVipBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVipBannerCell.swift; sourceTree = "<group>"; };
 		CF6103A121131CCB00CF9B04 /* HomeVipCategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVipCategoriesCell.swift; sourceTree = "<group>"; };
+		CF6259892137E29B00F9B072 /* gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif.gif; sourceTree = "<group>"; };
 		CF642D262123BCBA00BAE77F /* OneKeyListenLTCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneKeyListenLTCell.swift; sourceTree = "<group>"; };
 		CF642D282124045900BAE77F /* VipAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VipAnimationView.swift; sourceTree = "<group>"; };
 		CF642D2A21240F2200BAE77F /* FMMineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMMineHeaderView.swift; sourceTree = "<group>"; };
@@ -937,6 +939,7 @@
 		CF6259822137DDBB00F9B072 /* 效果图 */ = {
 			isa = PBXGroup;
 			children = (
+				CF6259892137E29B00F9B072 /* gif.gif */,
 			);
 			path = "效果图";
 			sourceTree = "<group>";
@@ -1716,6 +1719,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFC396FD211969570066D7DE /* FindRecommend.json in Resources */,
+				CF62598A2137E29B00F9B072 /* gif.gif in Resources */,
 				CF885E3621227F5300B13F4B /* listenRecommend.json in Resources */,
 				CF885E24212265E800B13F4B /* lead02.png in Resources */,
 				CF2640C5210EB6E700BBB398 /* guide_btn_bg@2x.png in Resources */,
