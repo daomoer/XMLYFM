@@ -3,6 +3,8 @@
 
 目前的一些效果图
 
+![效果图](https://github.com/daomoer/XMLYFM/blob/master/XMLYFM/效果图/gif.gif)
+
 2018/8/26更新报告 ---
 基本整体流程跑通，分类二级模块和播放模块
 
