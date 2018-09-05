@@ -39,6 +39,12 @@ class RecommendLiveCell: UICollectionViewCell {
         return label
     }()
     
+    // 播放器动画效果
+    private var replicatorLayer:ReplicatorLayer = {
+        let layer = ReplicatorLayer.init(frame: CGRect(x: 0, y: 0, width: 2, height: 15))
+        return layer
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpUI()
@@ -75,6 +81,14 @@ class RecommendLiveCell: UICollectionViewCell {
             make.top.equalTo(self.titleLabel.snp.bottom)
             make.height.equalTo(40)
             make.bottom.equalToSuperview()
+        }
+        
+        self.imageView.addSubview(self.replicatorLayer)
+        self.replicatorLayer.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(-10)
+            make.width.equalTo(20)
+            make.height.equalTo(10)
         }
     }
     

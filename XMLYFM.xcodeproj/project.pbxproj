@@ -84,6 +84,7 @@
 		CF642D272123BCBA00BAE77F /* OneKeyListenLTCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF642D262123BCBA00BAE77F /* OneKeyListenLTCell.swift */; };
 		CF642D292124045900BAE77F /* VipAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF642D282124045900BAE77F /* VipAnimationView.swift */; };
 		CF642D2B21240F2200BAE77F /* FMMineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF642D2A21240F2200BAE77F /* FMMineHeaderView.swift */; };
+		CF7D07CF213FA6E0003F6CAA /* ReplicatorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7D07CE213FA6E0003F6CAA /* ReplicatorLayer.swift */; };
 		CF7D9D9D212D732600364D85 /* URefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7D9D9C212D732600364D85 /* URefresh.swift */; };
 		CF7FDAFA212A919800E36C51 /* ClassifySubModuleType16Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FDAF9212A919800E36C51 /* ClassifySubModuleType16Cell.swift */; };
 		CF7FDAFC212A91AC00E36C51 /* ClassifySubModuleType23Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FDAFB212A91AC00E36C51 /* ClassifySubModuleType23Cell.swift */; };
@@ -296,6 +297,7 @@
 		CF642D262123BCBA00BAE77F /* OneKeyListenLTCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneKeyListenLTCell.swift; sourceTree = "<group>"; };
 		CF642D282124045900BAE77F /* VipAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VipAnimationView.swift; sourceTree = "<group>"; };
 		CF642D2A21240F2200BAE77F /* FMMineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMMineHeaderView.swift; sourceTree = "<group>"; };
+		CF7D07CE213FA6E0003F6CAA /* ReplicatorLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplicatorLayer.swift; sourceTree = "<group>"; };
 		CF7D9D9C212D732600364D85 /* URefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URefresh.swift; sourceTree = "<group>"; };
 		CF7FDAF9212A919800E36C51 /* ClassifySubModuleType16Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubModuleType16Cell.swift; sourceTree = "<group>"; };
 		CF7FDAFB212A91AC00E36C51 /* ClassifySubModuleType23Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySubModuleType23Cell.swift; sourceTree = "<group>"; };
@@ -944,9 +946,18 @@
 			path = "效果图";
 			sourceTree = "<group>";
 		};
+		CF7D07CD213FA695003F6CAA /* ReplicatorLayer */ = {
+			isa = PBXGroup;
+			children = (
+				CF7D07CE213FA6E0003F6CAA /* ReplicatorLayer.swift */,
+			);
+			path = ReplicatorLayer;
+			sourceTree = "<group>";
+		};
 		CF7D9D9A212D732600364D85 /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
+				CF7D07CD213FA695003F6CAA /* ReplicatorLayer */,
 				CF7D9D9B212D732600364D85 /* Refresh */,
 			);
 			path = CommonUI;
@@ -1897,6 +1908,7 @@
 				CF642D292124045900BAE77F /* VipAnimationView.swift in Sources */,
 				CFFFE0D7212575B800869F7A /* MineSetController.swift in Sources */,
 				CFFD37C72114084D0056979F /* VipEnjoyCell.swift in Sources */,
+				CF7D07CF213FA6E0003F6CAA /* ReplicatorLayer.swift in Sources */,
 				CF2ADBB9212FAA760077C544 /* FMPlayFooterView.swift in Sources */,
 				CFFFE05A21253B3000869F7A /* CVLayerView.swift in Sources */,
 				CFFE6CB1211016AA00974A8A /* OneKeyListenCell.swift in Sources */,
