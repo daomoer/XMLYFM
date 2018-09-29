@@ -1,5 +1,5 @@
 # XMLYFM
-项目分析简书地址：https://www.jianshu.com/p/f224a3c8aa13
+项目分析地址：https://juejin.im/post/5b97743df265da0af21351aa
 
 手贱啊！！！🤗🤗🤗更新了手机APP，发现喜马拉雅界面变化好大啊，可怜我的仿写又得改了！！！😭😭😭
 
